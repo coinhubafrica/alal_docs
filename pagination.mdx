@@ -1,0 +1,25 @@
+ALAL prend en charge la récupération de toutes les ressources API de premier niveau comme les clients, les cartes, les autorisations, les transactions, etc. Ces points de terminaison partagent une structure commune, prenant au moins ces deux paramètres : `current_page` et `per_page`. Par défaut, `current_page` est fixée à `0` et `per_page` à `20`. Vous pouvez récupérer un maximum de `100` enregistrements à la fois. La réponse résultante comprendra toujours un objet de pagination avec le nombre total d'enregistrements, le nombre de pages, la page actuelle et la limite fixée.
+
+```json
+{
+  "message": "OK",
+  "statusCode": 200,
+  "data": [
+    {
+      "data": [
+        {.......},
+        {.......},
+        {.......},
+      ],
+      "meta": {
+        "current_page": 1,
+        "from": 1,
+        "last_page": 1,
+        "per_page": 20,
+        "to": 17,
+        "total": 17
+      }
+    }
+  ]
+}
+```

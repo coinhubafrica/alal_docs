@@ -1,0 +1,17 @@
+---
+title: "Erreurs"
+---
+
+ALAL utilise les codes de réponse HTTP conventionnels pour indiquer le succès ou l'échec d'une requête API. En général : Les codes de la série `2xx` indiquent un succès. Les codes de la série `4xx` indiquent une erreur qui a échoué compte tenu des informations fournies (par exemple, un paramètre requis a été omis, une demande a échoué, etc.) Les codes de la série `5xx` indiquent une erreur avec les serveurs de ALAL (ils sont rares).
+
+|              **Code**              |                                                          **Description**                                                          |
+| :--------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------: |
+|              200 - OK              |                                                  Tout a fonctionné comme prévu.                                                   |
+|         400 - Bad Request          |                            La demande était inacceptable, souvent du a l'absence un paramètre requis.                             |
+|         401 - Unauthorized         |                                              Aucune clé API valide n'a été fournie.                                               |
+|        402 - Request Failed        |                                     Les paramètres étaient valides mais la demande a échoué.                                      |
+|          403 - Forbidden           |                                     La clé API n'a pas l'autorisation d'exécuter la demande.                                      |
+|          404 - Not Found           |                                                La ressource demandée n'existe pas.                                                |
+|           409 - Conflict           |                                         La demande est en conflit avec une autre demande.                                         |
+|      429 - Too Many Requests       |        Trop de demandes arrivent trop rapidement sur l'API. Nous recommandons une réduction exponentielle de vos demandes.        |
+| 500, 502, 503, 504 - Server Errors | Quelque chose a mal tourné du côté de Sudo. Ces problèmes sont rares et s'ils surviennent, veuillez nous contacter immédiatement. |

@@ -1,0 +1,173 @@
+---
+sidebar_position: 1
+---
+
+# Webhooks
+
+When events happen on our systems you'll be notified on your ipn urls. You have to configure 2 urls
+
+- `Ipn sandbox` : for production
+- `Sandbox Ipn URL` : for sandbox and test purpose
+
+## Card Users Events
+
+### CardUser Verification Successful
+
+```json
+{
+  "event": "card_user_verification.successful",
+  "data": {
+    "reference": "88c2f29c-2fba-40f1-a303-b33008e42fe9",
+    "first_name": "Testeur",
+    "last_name": "glock",
+    "address": "Pikine Texaco 11",
+    "id_no": "17521999133211635",
+    "phone": "221776854872",
+    "email": "testingboy@gmail.com",
+    "status": "passed"
+  }
+}
+```
+
+### CardUser Verification Failed
+
+```json
+{
+  "event": "card_user_verification.failed",
+  "data": {
+    "reference": "88c2f29c-2fba-40f1-a303-b33008e42fe9",
+    "first_name": "Testeur",
+    "last_name": "glock",
+    "address": "Pikine Texaco 11",
+    "id_no": "17521999133211635",
+    "phone": "221776854872",
+    "email": "testingboy@gmail.com",
+    "status": "failed"
+  }
+}
+```
+
+## Cards Events
+
+### Card Creation Successful
+
+```json
+{
+  "event": "card_creation.successful",
+  "data": {
+    "reference": "9c54515e-7890-44f9-8cc2-a85b80322b98",
+    "card_number": "4634716555196705",
+    "card_brand": "Visa",
+    "card_type": "virtual",
+    "cvv2": "363",
+    "expiry": "2027-06",
+    "balance": "0",
+    "status": "issued"
+  }
+}
+```
+
+### Card Creation Failed
+
+```json
+{
+  "event": "card_creation.failed",
+  "data": {
+    "reference": "9c54515e-7890-44f9-8cc2-a85b80322b98",
+    "card_number": "4634716555196705",
+    "card_brand": "Visa",
+    "card_type": "virtual",
+    "cvv2": "363",
+    "expiry": "2027-06",
+    "balance": "0",
+    "status": "unissued"
+  }
+}
+```
+
+## Transaction Events
+
+### Recharge Successful
+
+```json
+{
+  "event": "card_recharge.successful",
+  "data": {
+    "reference": "b60f55b1-922a-406a-8417-g54atb0849ttb22c",
+    "card_reference": "9c54515e-7890-44f9-8cc2-a85b80322b98",
+    "status": "success",
+    "kind": "recharge",
+    "merchant": "",
+    "amount": 2000,
+    "created_at": "2023-06-22T10:40:17.000000Z"
+  }
+}
+```
+
+### Recharge Failed
+
+```json
+{
+  "event": "card_recharge.failed",
+  "data": {
+    "reference": "b60f55b1-922a-406a-8417-g54atb0849ttb22c",
+    "card_reference": "9c54515e-7890-44f9-8cc2-a85b80322b98",
+    "status": "failed",
+    "kind": "recharge",
+    "merchant": "",
+    "amount": 2000,
+    "created_at": "2023-06-22T10:40:17.000000Z"
+  }
+}
+```
+
+### Withdraw Successful
+
+```json
+{
+  "event": "card_withdraw.successful",
+  "data": {
+    "reference": "b60f55b1-922a-406a-8417-g54atb0849ttb22c",
+    "card_reference": "9c54515e-7890-44f9-8cc2-a85b80322b98",
+    "status": "success",
+    "kind": "withdraw",
+    "merchant": "Netflix SA",
+    "amount": 2000,
+    "created_at": "2023-06-22T10:40:17.000000Z"
+  }
+}
+```
+
+### Withdraw Failed
+
+```json
+{
+  "event": "card_withdraw.failed",
+  "data": {
+    "reference": "b60f55b1-922a-406a-8417-g54atb0849ttb22c",
+    "card_reference": "9c54515e-7890-44f9-8cc2-a85b80322b98",
+    "status": "failed",
+    "kind": "withdraw",
+    "merchant": "Netflix SA",
+    "amount": 2000,
+    "created_at": "2023-06-22T10:40:17.000000Z"
+  }
+}
+```
+
+### Reverse Successful
+
+```json
+{
+  "event": "card_reverse.successful",
+  "data": {
+    "reference": "b60f55b1-922a-406a-8417-g54atb0849ttb22c",
+    "card_reference": "9c54515e-7890-44f9-8cc2-a85b80322b98",
+    "status": "success",
+    "kind": "reversed",
+    "merchant": "Netflix SA",
+    "amount": 2000,
+    "created_at": "2023-06-22T10:40:17.000000Z"
+  }
+}
+```

@@ -1,0 +1,1350 @@
+openapi: 3.0.0
+info:
+  title: ALAL APIs
+  version: 1.0.0
+servers:
+  - url: http://{{base_url}}
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+tags:
+  - name: Cards
+  - name: Transactions
+  - name: CardUsers
+paths:
+  /cards:
+    get:
+      tags:
+        - Cards
+      summary: List Card
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: per_page
+          in: query
+          schema:
+            type: integer
+          example: '20'
+      responses:
+        '200':
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: localhost:8090
+            Date:
+              schema:
+                type: string
+                example: Wed, 26 Jul 2023 18:49:30 GMT
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.2.4
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '60'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '59'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                message: OK
+                statusCode: 200
+                data:
+                  - data:
+                      - reference: 792c6cf2-f5cf-46c8-bf8c-699a9028010e
+                        card_number: null
+                        card_brand: null
+                        card_type: null
+                        cvv2: null
+                        expiry: null
+                        balance: 0
+                        status: unissued
+                      - reference: a51527bc-1c93-44ad-a4db-f68b4bed26b3
+                        card_number: null
+                        card_brand: null
+                        card_type: null
+                        cvv2: null
+                        expiry: null
+                        balance: 0
+                        status: unissued
+                      - reference: 8c27ae9b-57c8-41e8-9bcf-6530a01b77fa
+                        card_number: null
+                        card_brand: null
+                        card_type: physical
+                        cvv2: null
+                        expiry: null
+                        balance: 0
+                        status: unissued
+                      - reference: db408374-0a25-497f-b9b3-45b16c110812
+                        card_number: null
+                        card_brand: Visa
+                        card_type: virtual
+                        cvv2: null
+                        expiry: null
+                        balance: 4000
+                        status: unissued
+                      - reference: 906a11e0-f5d9-4e43-8dbb-0e792116abb0
+                        card_number: null
+                        card_brand: Visa
+                        card_type: virtual
+                        cvv2: null
+                        expiry: null
+                        balance: 1000
+                        status: unissued
+                      - reference: 9c54515e-7890-44f9-8cc2-a85b80322b98
+                        card_number: '4634716555196705'
+                        card_brand: Visa
+                        card_type: virtual
+                        cvv2: '363'
+                        expiry: 2027-06
+                        balance: 3248
+                        status: issued
+                      - reference: d282e4a6-1fb6-4827-a6ae-a780263287d7
+                        card_number: null
+                        card_brand: Visa
+                        card_type: virtual
+                        cvv2: null
+                        expiry: null
+                        balance: 0
+                        status: issuing
+                      - reference: b9f0f850-dd0b-4e3a-bf27-66f3b5ba2ae9
+                        card_number: '4174650207847260'
+                        card_brand: visa
+                        card_type: virtual
+                        cvv2: '874'
+                        expiry: '2029-12-01'
+                        balance: 0
+                        status: issuing
+                      - reference: 985ed1ca-4438-4fa7-b212-bfbeb3bb5fd2
+                        card_number: '4597783274065828'
+                        card_brand: visa
+                        card_type: virtual
+                        cvv2: '178'
+                        expiry: 2029-12
+                        balance: 0
+                        status: issuing
+                      - reference: d0c5d342-94d5-4dbd-8fe9-9d3a9de0a41a
+                        card_number: '4442477307763351'
+                        card_brand: visa
+                        card_type: virtual
+                        cvv2: '975'
+                        expiry: 2029-12
+                        balance: 500
+                        status: issued
+                      - reference: 63e77fa7-596e-4789-8fbe-77bcc266e22a
+                        card_number: '4175589539079862'
+                        card_brand: visa
+                        card_type: virtual
+                        cvv2: '472'
+                        expiry: 2029-12
+                        balance: 600
+                        status: issued
+                      - reference: 06a4c311-997d-44be-9210-f63d2e3bb18b
+                        card_number: null
+                        card_brand: visa
+                        card_type: virtual
+                        cvv2: null
+                        expiry: null
+                        balance: 0
+                        status: issuing
+                      - reference: e817b25a-d4fa-4424-83fd-ef8f4e35b591
+                        card_number: null
+                        card_brand: visa
+                        card_type: virtual
+                        cvv2: null
+                        expiry: null
+                        balance: 0
+                        status: issuing
+                      - reference: 1d930bdb-f4cb-4667-83b3-adf770797209
+                        card_number: null
+                        card_brand: Visa
+                        card_type: virtual
+                        cvv2: null
+                        expiry: null
+                        balance: 0
+                        status: issuing
+                      - reference: 15f34565-8ae7-4518-9ed8-bd5bd68343fe
+                        card_number: null
+                        card_brand: Visa
+                        card_type: virtual
+                        cvv2: null
+                        expiry: null
+                        balance: 0
+                        status: issuing
+                      - reference: a50d3f06-c3fb-4ee3-8f4e-19f4f603b2ba
+                        card_number: null
+                        card_brand: visa
+                        card_type: virtual
+                        cvv2: null
+                        expiry: null
+                        balance: 0
+                        status: issuing
+                      - reference: b4ab4699-025d-4467-a0f8-0e55c0c5e992
+                        card_number: '4695006829879245'
+                        card_brand: Visa
+                        card_type: virtual
+                        cvv2: '123'
+                        expiry: 2027-07
+                        balance: 1013.28384
+                        status: issued
+                    links:
+                      first: http://localhost:8090/api/v1/cards?per_page=20&page=1
+                      last: http://localhost:8090/api/v1/cards?per_page=20&page=1
+                      prev: null
+                      next: null
+                    meta:
+                      current_page: 1
+                      from: 1
+                      last_page: 1
+                      links:
+                        - url: null
+                          label: '&laquo; Précédent'
+                          active: false
+                        - url: >-
+                            http://localhost:8090/api/v1/cards?per_page=20&page=1
+                          label: '1'
+                          active: true
+                        - url: null
+                          label: Suivant &raquo;
+                          active: false
+                      path: http://localhost:8090/api/v1/cards
+                      per_page: 20
+                      to: 17
+                      total: 17
+  /cards/792c6cf2-f5cf-46c8-bf8c-699a9028010e:
+    get:
+      tags:
+        - Cards
+      summary: Show Card
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '500':
+          description: Internal Server Error
+          headers:
+            Host:
+              schema:
+                type: string
+                example: localhost:8090
+            Date:
+              schema:
+                type: string
+                example: Sun, 23 Jul 2023 16:38:23 GMT
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.2.4
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '60'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '58'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                message: undefined card reference.
+                statusCode: 500
+                errors: []
+  /cards/6516484d-0059-4f53-b2cf-31f3ae884d3a:
+    get:
+      tags:
+        - Cards
+      summary: Fetch Card
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: localhost:8090
+            Date:
+              schema:
+                type: string
+                example: Sun, 18 Jun 2023 20:35:41 GMT
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.2.4
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '60'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '59'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                message: OK
+                statusCode: 200
+                data:
+                  card:
+                    reference: db408374-0a25-497f-b9b3-45b16c110812
+                    card_number: null
+                    card_brand: Visa
+                    card_type: virtual
+                    cvv2: null
+                    expiry: null
+                    balance: 1000
+                    status: 1000
+        '500':
+          description: Internal Server Error
+          headers:
+            Host:
+              schema:
+                type: string
+                example: localhost:8090
+            Date:
+              schema:
+                type: string
+                example: Sun, 18 Jun 2023 20:35:57 GMT
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.2.4
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '60'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '58'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                message: undefined card reference.
+                statusCode: 500
+                errors: []
+  /cards/user:
+    post:
+      tags:
+        - Cards
+      summary: Register Card User
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                first_name: ndeye ngone
+                last_name: ndiaye
+                address: rue ng 59 grand ngor
+                phone: '774964996'
+                email: ndiayendeyengone99@gmail.com
+                id_no: '20119991010000621'
+                selfie_image: >-
+                  https://bambara.coinhub.africa/storage/1311/image_picker_33DEBD5E-0F27-423F-97FC-6F86A1C44261-1364-0000006A588CEFD6.jpg
+                id_image: >-
+                  https://bambara.coinhub.africa/storage/1309/image_picker_ADCC3404-1E7F-4959-A226-262D1A23A6C0-1364-00000068CFCD2A74.jpg
+                back_id_image: >-
+                  https://bambara.coinhub.africa/storage/1310/image_picker_8156358E-64CF-431B-A803-9FCF47F14963-1364-000000691672C6D4.jpg
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: localhost:8090
+            Date:
+              schema:
+                type: string
+                example: Thu, 22 Jun 2023 10:02:42 GMT
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.2.4
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '60'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '59'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                message: OK
+                statusCode: 200
+                data:
+                  message: Card User verification in progress
+                  userCard:
+                    reference: 88c2f29c-2fba-40f1-a303-b33008e42fe9
+                    first_name: Testeur
+                    last_name: glock
+                    address: Pikine Texaco 11
+                    id_no: '17521999133211635'
+                    phone: '221776854872'
+                    email: testingboy@gmail.com
+        '422':
+          description: Unprocessable Content
+          headers:
+            Host:
+              schema:
+                type: string
+                example: localhost:8090
+            Date:
+              schema:
+                type: string
+                example: Thu, 22 Jun 2023 10:00:54 GMT
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.2.4
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '60'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '59'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                message: La valeur du champ id no est déjà utilisée.
+                errors:
+                  id_no:
+                    - La valeur du champ id no est déjà utilisée.
+        '500':
+          description: Internal Server Error
+          headers:
+            Server:
+              schema:
+                type: string
+                example: nginx
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Date:
+              schema:
+                type: string
+                example: Wed, 12 Jul 2023 12:43:10 GMT
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '60'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '59'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                message: Card User creation failed
+                statusCode: 500
+                errors:
+                  userCard:
+                    reference: 2baec707-ccd8-4f71-9bdd-5dab5e0ce8b8
+                    first_name: Bassirou
+                    last_name: ndao
+                    address: villa 100506 sacre coeur
+                    id_no: '10119941019000640'
+                    phone: '776440100'
+                    email: bachirnd2@gmail.com
+                    status: failed
+  /cards/create:
+    post:
+      tags:
+        - Cards
+      summary: Create Card
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                cardUserReference: 141cdcbb-df5b-4a40-b8fa-739415f1f66c
+                cardBrand: visa
+                cardType: virtual
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: localhost:8090
+            Date:
+              schema:
+                type: string
+                example: Thu, 22 Jun 2023 10:34:03 GMT
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.2.4
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '60'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '59'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                message: Card currently being generated
+                statusCode: 200
+                data:
+                  card:
+                    reference: d282e4a6-1fb6-4827-a6ae-a780263287d7
+                    card_number: null
+                    card_brand: Visa
+                    card_type: virtual
+                    cvv2: null
+                    expiry: null
+                    balance: 0
+                    status: issuing
+        '500':
+          description: Internal Server Error
+          headers:
+            Host:
+              schema:
+                type: string
+                example: localhost:8090
+            Date:
+              schema:
+                type: string
+                example: Thu, 22 Jun 2023 10:23:15 GMT
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.2.4
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '60'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '58'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                message: undefined cardUser reference.
+                statusCode: 500
+                errors: []
+  /transactions:
+    get:
+      tags:
+        - Transactions
+      summary: List Transactions on Card
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: card_reference
+          in: query
+          schema:
+            type: string
+          example: 6516484d-0059-4f53-b2cf-31f3ae884d3a
+      responses:
+        '200':
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: localhost:8090
+            Date:
+              schema:
+                type: string
+                example: Thu, 22 Jun 2023 11:33:18 GMT
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.2.4
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '60'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '59'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                message: OK
+                statusCode: 200
+                data:
+                  transaction:
+                    - slug: e1d30877-0353-45b3-82fb-92780238ecb4
+                      card_reference: 9c54515e-7890-44f9-8cc2-a85b80322b98
+                      reference: b60f55b1-922a-406a-8417-g54atb0849ttb22c
+                      status: success
+                      kind: recharge
+                      merchant: false
+                      amount: 2000
+                      created_at: '2023-06-22T10:40:17.000000Z'
+                    - slug: 119d2a37-22e8-4122-9d18-267909aef996
+                      card_reference: 9c54515e-7890-44f9-8cc2-a85b80322b98
+                      reference: b60f55b1-922a-406a-8417-g5g4atb0849ttb22c
+                      status: success
+                      kind: recharge
+                      merchant: false
+                      amount: 2000
+                      created_at: '2023-06-22T11:07:07.000000Z'
+                    - slug: 1e4aa0d1-1979-47a0-83e6-ecb1c19f0a18
+                      card_reference: 9c54515e-7890-44f9-8cc2-a85b80322b98
+                      reference: b60f55b1-922a-406a-8417-g5hhg4atb0849ttb22c
+                      status: success
+                      kind: recharge
+                      merchant: false
+                      amount: 1000
+                      created_at: '2023-06-22T11:18:01.000000Z'
+                    - slug: 9e3c8b93-d024-4973-bd50-64310879502a
+                      card_reference: 9c54515e-7890-44f9-8cc2-a85b80322b98
+                      reference: b60f55b1-922a-406a-8417-g5hhg4a88jtb0849ttb22c
+                      status: success
+                      kind: withdraw
+                      merchant: false
+                      amount: 1000
+                      created_at: '2023-06-22T11:25:37.000000Z'
+        '500':
+          description: Internal Server Error
+          headers:
+            Host:
+              schema:
+                type: string
+                example: localhost:8090
+            Date:
+              schema:
+                type: string
+                example: Thu, 22 Jun 2023 11:52:01 GMT
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.2.4
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '60'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '58'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                message: undefined card reference.
+                statusCode: 500
+                errors: []
+  /transactions/create:
+    post:
+      tags:
+        - Transactions
+      summary: TopUp or Withdraw Card
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                amount: 2000
+                cardReference: 6516484d-0059-4f53-b2cf-31f3ae884d3a
+                reference: b60f54d5b1-922a-40ty6a-8417-fasjhdfdfdi231i
+                action: withdraw
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: localhost:8090
+            Date:
+              schema:
+                type: string
+                example: Thu, 22 Jun 2023 10:40:18 GMT
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.2.4
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '60'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '59'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                message: OK
+                statusCode: 200
+                data:
+                  transaction:
+                    slug: e1d30877-0353-45b3-82fb-92780238ecb4
+                    card_reference: 9c54515e-7890-44f9-8cc2-a85b80322b98
+                    reference: b60f55b1-922a-406a-8417-g54atb0849ttb22c
+                    status: pending
+                    kind: recharge
+                    merchant: false
+                    amount: 2000
+                    created_at: '2023-06-22T10:40:17.000000Z'
+        '400':
+          description: Bad Request
+          headers:
+            Host:
+              schema:
+                type: string
+                example: localhost:8090
+            Date:
+              schema:
+                type: string
+                example: Thu, 22 Jun 2023 10:38:11 GMT
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.2.4
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '60'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '59'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                message: Bad Request
+                statusCode: 400
+                errors:
+                  reference:
+                    - La valeur du champ reference est déjà utilisée.
+  /card-users:
+    get:
+      tags:
+        - CardUsers
+      summary: List CardUser
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: per_page
+          in: query
+          schema:
+            type: integer
+          example: '20'
+      responses:
+        '200':
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: localhost:8090
+            Date:
+              schema:
+                type: string
+                example: Wed, 26 Jul 2023 18:50:54 GMT
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.2.4
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '60'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '59'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                message: OK
+                statusCode: 200
+                data:
+                  - data:
+                      - reference: null
+                        first_name: John
+                        last_name: Doe
+                        address: 9 Jibowu Street
+                        id_no: '11111111111'
+                        phone: '08122277789'
+                        email: testingboy@gmail.com
+                        status: null
+                      - reference: null
+                        first_name: John
+                        last_name: Doe
+                        address: 9 Jibowu Street
+                        id_no: '11111111111'
+                        phone: '08122277789'
+                        email: testingboy@gmail.com
+                        status: null
+                      - reference: null
+                        first_name: John
+                        last_name: Doe
+                        address: 9 Jibowu Street
+                        id_no: '11111111111'
+                        phone: '08122277789'
+                        email: testingboy@gmail.com
+                        status: null
+                      - reference: null
+                        first_name: John
+                        last_name: Doe
+                        address: 9 Jibowu Street
+                        id_no: '11111111111'
+                        phone: '08122277789'
+                        email: testingboy@gmail.com
+                        status: null
+                      - reference: null
+                        first_name: John
+                        last_name: Doe
+                        address: 9 Jibowu Street
+                        id_no: '11111111111'
+                        phone: '08122277789'
+                        email: testingboy@gmail.com
+                        status: null
+                      - reference: null
+                        first_name: John
+                        last_name: Doe
+                        address: 9 Jibowu Street
+                        id_no: '11111111111'
+                        phone: '08122277789'
+                        email: testingboy@gmail.com
+                        status: null
+                      - reference: null
+                        first_name: John
+                        last_name: Doe
+                        address: 9 Jibowu Street
+                        id_no: '11111111111'
+                        phone: '08122277789'
+                        email: testingboy@gmail.com
+                        status: null
+                      - reference: null
+                        first_name: John
+                        last_name: Doe
+                        address: 9 Jibowu Street
+                        id_no: '11111111111'
+                        phone: '08122277789'
+                        email: testingboy@gmail.com
+                        status: null
+                      - reference: null
+                        first_name: John
+                        last_name: Doe
+                        address: 9 Jibowu Street
+                        id_no: '11111111111'
+                        phone: '08122277789'
+                        email: testingboy@gmail.com
+                        status: null
+                      - reference: null
+                        first_name: John
+                        last_name: Doe
+                        address: 9 Jibowu Street
+                        id_no: '11111111111'
+                        phone: '08122277789'
+                        email: testingboy@gmail.com
+                        status: null
+                      - reference: 47c72022-0c9a-492d-b6f6-4cdd060af76f
+                        first_name: John
+                        last_name: Doe
+                        address: 9 Jibowu Street
+                        id_no: '11111111111'
+                        phone: '08122277789'
+                        email: testingboy@gmail.com
+                        status: null
+                      - reference: 57101f9e-6b26-4875-b34f-1fd2b175271e
+                        first_name: John
+                        last_name: Doe
+                        address: 9 Jibowu Street
+                        id_no: '11111111111'
+                        phone: '08122277789'
+                        email: testingboy@gmail.com
+                        status: null
+                      - reference: 4e86400e-20a7-4341-834a-c9676422422a
+                        first_name: John
+                        last_name: Doe
+                        address: 9 Jibowu Street
+                        id_no: '11111111111'
+                        phone: '08122277789'
+                        email: testingboy@gmail.com
+                        status: null
+                      - reference: 0b7cdb7e-94ab-4a96-99e2-02311130c5a1
+                        first_name: John
+                        last_name: Doe
+                        address: 9 Jibowu Street
+                        id_no: '11111111111'
+                        phone: '+221786338816'
+                        email: testingboy@gmail.com
+                        status: null
+                      - reference: 8c9b8494-3805-4cfc-a171-855fb8e2d6d7
+                        first_name: Testing
+                        last_name: Boy
+                        address: Pikine Texaco 11
+                        id_no: '1752199801163'
+                        phone: '+221796338816'
+                        email: testingboy@gmail.com
+                        status: null
+                      - reference: 3d28c91f-c9e6-4d09-9465-bccb25582734
+                        first_name: Testing
+                        last_name: Boy
+                        address: Pikine Texaco 11
+                        id_no: '1752199801163'
+                        phone: '0221796338816'
+                        email: testingboy@gmail.com
+                        status: null
+                      - reference: 45aaaeb6-0a57-425f-94b2-737e52c1f296
+                        first_name: Testing
+                        last_name: Boy
+                        address: Pikine Texaco 11
+                        id_no: '1752199801163'
+                        phone: '00221796338816'
+                        email: testingboy@gmail.com
+                        status: null
+                      - reference: d3970eff-aae0-4d4a-8d3e-8218065fc968
+                        first_name: Testing
+                        last_name: Boy
+                        address: Pikine Texaco 11
+                        id_no: '1752199801163'
+                        phone: '796338816'
+                        email: testingboy@gmail.com
+                        status: null
+                      - reference: 83865f93-c204-499e-b133-401d3322b242
+                        first_name: Testing
+                        last_name: Boy
+                        address: Pikine Texaco 11
+                        id_no: '1752199801163'
+                        phone: '221796338816'
+                        email: testingboy@gmail.com
+                        status: null
+                      - reference: b4def0e9-8b4d-41d3-903e-d6d7fe722f61
+                        first_name: Testing
+                        last_name: Boy
+                        address: Pikine Texaco 11
+                        id_no: '1752199801163'
+                        phone: '221796338816'
+                        email: testingboy@gmail.com
+                        status: null
+                    links:
+                      first: >-
+                        http://localhost:8090/api/v1/card-users?per_page=20&page=1
+                      last: >-
+                        http://localhost:8090/api/v1/card-users?per_page=20&page=3
+                      prev: null
+                      next: >-
+                        http://localhost:8090/api/v1/card-users?per_page=20&page=2
+                    meta:
+                      current_page: 1
+                      from: 1
+                      last_page: 3
+                      links:
+                        - url: null
+                          label: '&laquo; Précédent'
+                          active: false
+                        - url: >-
+                            http://localhost:8090/api/v1/card-users?per_page=20&page=1
+                          label: '1'
+                          active: true
+                        - url: >-
+                            http://localhost:8090/api/v1/card-users?per_page=20&page=2
+                          label: '2'
+                          active: false
+                        - url: >-
+                            http://localhost:8090/api/v1/card-users?per_page=20&page=3
+                          label: '3'
+                          active: false
+                        - url: >-
+                            http://localhost:8090/api/v1/card-users?per_page=20&page=2
+                          label: Suivant &raquo;
+                          active: false
+                      path: http://localhost:8090/api/v1/card-users
+                      per_page: 20
+                      to: 20
+                      total: 45
+  /card-users/83865f93-c204-499e-b133-401d3322b242:
+    get:
+      tags:
+        - CardUsers
+      summary: Show CardUser
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: localhost:8090
+            Date:
+              schema:
+                type: string
+                example: Wed, 26 Jul 2023 18:51:35 GMT
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.2.4
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '60'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '58'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                message: OK
+                statusCode: 200
+                data:
+                  cardUser:
+                    reference: 83865f93-c204-499e-b133-401d3322b242
+                    first_name: Testing
+                    last_name: Boy
+                    address: Pikine Texaco 11
+                    id_no: '1752199801163'
+                    phone: '221796338816'
+                    email: testingboy@gmail.com
+                    status: null
