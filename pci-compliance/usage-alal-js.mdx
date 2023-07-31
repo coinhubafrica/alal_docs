@@ -1,0 +1,85 @@
+---
+title: "Utilisation de Alal.js"
+description: "ALAL fournit une bibliothèque JavaScript qui vous permet d'afficher les données sensibles des cartes dans votre application ou votre page web tout en limitant votre charge de conformité en matière de sécurité des données."
+---
+
+Les entreprises qui stockent, transmettent ou traitent des données sensibles relatives aux cartes, notamment le numéro de compte principal (PAN), la valeur de vérification de la carte (CVV2), la date d'expiration et le numéro d'identification personnel (PIN), doivent se conformer à la norme de sécurité des données de l'industrie des cartes de paiement (Payment Card Industry Data Security Standard - PCI DSS). L'obtention de la certification PCI DSS est à la fois longue et coûteuse.
+
+Alal.js injecte dans votre code HTML un ensemble d'iframes configurables affichant les données de la carte du titulaire. Les iframes vous permettent d'afficher une carte virtuelle ou un code PIN sans traiter les données sensibles de la carte sur vos serveurs. Alal.js peut également ajouter des boutons à votre application ou à votre page web qui copient le PAN, la date d'expiration ou le CVV2 d'une carte dans le presse-papiers.
+
+## Fonctionnement
+
+Le processus suivant décrit comment Alal.js injecte les iframes dans votre application.
+
+![ALAL JS description](/images/alaljs.png)
+
+1. Le back-end de votre application demande un jeton d'accès client (Access Token).
+2. L'API de ALAL crée un jeton d'accès. Ce jeton permet d'accéder à la carte spécifiée et expire au bout de cinq minutes.
+3. Votre back-end transmet le jeton d'accès client à votre JavaScript.
+4. Votre JavaScript injecte le jeton d'accès client dans la méthode `alal.bootstrap()` par l'intermédiaire d'un objet de configuration.
+5. Votre JavaScript exécute `alal.bootstrap()`, qui initialise et configure Alal.js.
+6. Alal.js injecte les données de la carte et les boutons dans le conteneur HTML :
+   - Si vous affichez les données de la carte, cette action remplit des iframes séparées pour le PAN, le CVV2 et la date d'expiration de la carte (ainsi que pour leurs boutons respectifs Copier dans le presse-papiers, si vous avez décidé d'intégrer la fonctionnalité Copier dans le presse-papiers).
+   - Si vous révélez le code PIN du titulaire de la carte, cette action remplit l'iframe pour le code PIN caché et le bouton utilisé pour basculer l'affichage du code PIN. Le code PIN est initialement affiché à l'adresse ---- jusqu'à ce qu'il soit basculé.
+7. La page HTML affiche les informations demandées.
+
+## Example
+
+La méthode `.bootstrap()` de `Alal.js` nécessite un objet de configuration, qui définit les attributs et les comportements des iframes. Vous devez inclure l'ID de l'élément "div" dans lequel Alal.js injecte les différents iframes de données de carte.
+
+```HTML
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+  <div id="custom-card-pan"></div>
+  <div id="custom-card-exp"></div>
+  <div id="custom-card-cvv"></div>
+  <script src="/js/1.0.1/alal.js"></script>
+  <script>
+    // Usage of the library with showPan and its options
+    alal.bootstrap({
+      clientAccessToken: "LPOqDVAcTQCx7Lt7Iq83WxFQcntk6gtNpz1u7eWAvGOI5OjdQ",
+      showPan: {
+        cardPan: {
+          domId: "custom-card-pan",
+          onCopySuccess: () => alert("Copied PAN!"),
+          onCopyFailure: error => console.error(error),
+          styles: {},
+        },
+      },
+      showExp: {
+        cardExp: {
+          domId: "custom-card-exp",
+          onCopySuccess: () => alert("Copied Exp!"),
+          onCopyFailure: error => console.error(error),
+          styles: {},
+        },
+      },
+      showCvv: {
+        cardCvv: {
+          domId: "custom-card-cvv",
+          onCopySuccess: () => alert("Copied CVV!"),
+          onCopyFailure: error => console.error(error),
+          styles: {},
+        },
+      },
+      callbackEvents: {
+        onSuccess: () => {
+          console.log("Success!")
+        },
+        onFailure: error => {
+          console.error(error);
+        }
+      }
+    });
+  </script>
+</body>
+</html>
+```

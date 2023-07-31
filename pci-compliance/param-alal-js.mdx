@@ -1,0 +1,43 @@
+---
+title: "Paramètres de Alal.js"
+description: "La méthode `.bootstrap()` de Alal.js nécessite un objet de configuration, qui définit les attributs et les comportements des iframes. "
+---
+
+```js
+// Usage of the library with showPan and its options
+alal.bootstrap({
+  clientAccessToken: "LPOqDVAcTQCx7Lt7Iq83WxFQcntk6gtNpz1u7eWAvGOI5OjdQ",
+  showPan: {
+    cardPan: {
+      domId: "custom-card-pan",
+      onCopySuccess: () => alert("Copied PAN!"),
+      onCopyFailure: (error) => console.error(error),
+      styles: {},
+    },
+  },
+  showExp: {
+    cardExp: {
+      domId: "custom-card-exp",
+      onCopySuccess: () => alert("Copied Exp!"),
+      onCopyFailure: (error) => console.error(error),
+      styles: {},
+    },
+  },
+  showCvv: {
+    cardCvv: {
+      domId: "custom-card-cvv",
+      onCopySuccess: () => alert("Copied CVV!"),
+      onCopyFailure: (error) => console.error(error),
+      styles: {},
+    },
+  },
+  callbackEvents: {
+    onSuccess: () => {
+      console.log("Success!");
+    },
+    onFailure: (error) => {
+      console.error(error);
+    },
+  },
+});
+```

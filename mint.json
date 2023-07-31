@@ -47,6 +47,14 @@
       ]
     },
     {
+      "group": "PCI Compliance",
+      "pages": ["pci-compliance/usage-alal-js", "pci-compliance/param-alal-js"]
+    },
+    {
+      "group": "Webhooks",
+      "pages": ["webhooks/overview"]
+    },
+    {
       "group": "API Documentation",
       "pages": ["api-reference/authentication"]
     },
