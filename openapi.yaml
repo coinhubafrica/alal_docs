@@ -428,6 +428,34 @@ paths:
           application/json:
             schema:
               type: object
+              properties:
+                first_name:
+                  type: string
+                  example: ndeye ngone              
+                last_name:
+                  type: string
+                  example: ndiaye                
+                address:
+                  type: string
+                  example: rue ng 59 grand ngor                 
+                phone:
+                  type: string
+                  example: '774964996'                  
+                email:
+                  type: string
+                  example: ndiayendeyengone99@gmail.com                
+                id_no:
+                  type: string
+                  example: '20119991010000621'                  
+                selfie_image:
+                  type: string
+                  example: https://example.com/selfie.png                  
+                id_image:
+                  type: string
+                  example: https://example.com/id.png                
+                back_id_image:
+                  type: string
+                  example: https://example.com/backid.png                
               example:
                 first_name: ndeye ngone
                 last_name: ndiaye
@@ -498,6 +526,37 @@ paths:
             application/json:
               schema:
                 type: object
+                properties:
+                  message:
+                    type: string
+                    example: Card User verification in progress
+                  statusCode:
+                    type: integer
+                    example: 200
+                  userCard:
+                    type: object
+                    properties:
+                      reference:
+                        type: string
+                        example: 88c2f29c-2fba-40f1-a303-b33008e42fe9   
+                      first_name:
+                        type: string
+                        example: ndeye ngone              
+                      last_name:
+                        type: string
+                        example: ndiaye                
+                      address:
+                        type: string
+                        example: rue ng 59 grand ngor                 
+                      phone:
+                        type: string
+                        example: '774964996'                  
+                      email:
+                        type: string
+                        example: ndiayendeyengone99@gmail.com                
+                      id_no:
+                        type: string
+                        example: '20119991010000621'  
               example:
                 message: OK
                 statusCode: 200
@@ -554,6 +613,16 @@ paths:
             application/json:
               schema:
                 type: object
+                properties:
+                  message:
+                    type: string
+                    example: La valeur du champ id no est déjà utilisée.
+                  errors:
+                    type: object
+                    properties:
+                      id_no:
+                        type: string
+                        example: La valeur du champ id no est déjà utilisée.
               example:
                 message: La valeur du champ id no est déjà utilisée.
                 errors:
@@ -602,6 +671,16 @@ paths:
             application/json:
               schema:
                 type: object
+                properties:
+                  message:
+                    type: string
+                    example: Card User creation failed
+                  statusCode:
+                    type: integer
+                    example: 500
+                  errors:
+                    type: array
+                    example: []
               example:
                 message: Card User creation failed
                 statusCode: 500
@@ -625,6 +704,16 @@ paths:
           application/json:
             schema:
               type: object
+              properties:
+                cardUserReference:
+                  type: string
+                  example: 141cdcbb-df5b-4a40-b8fa-739415f1f66c
+                cardBrand:
+                  type: string
+                  example: visa
+                cardType:
+                  type: string
+                  example: virtual
               example:
                 cardUserReference: 141cdcbb-df5b-4a40-b8fa-739415f1f66c
                 cardBrand: visa
@@ -675,6 +764,40 @@ paths:
             application/json:
               schema:
                 type: object
+                properties:
+                  message:
+                    type: string
+                    example: Card currently being generated
+                  statusCode:
+                    type: integer
+                    example: 200
+                  card:
+                    type: object
+                    properties:
+                      reference:
+                        type: string
+                        example: d282e4a6-1fb6-4827-a6ae-a780263287d7
+                      card_number:
+                        type: string
+                        example: null
+                      card_brand:
+                        type: string
+                        example: Visa
+                      card_type:
+                        type: string
+                        example: virtual
+                      cvv2: 
+                        type: string
+                        example: null
+                      expiry:
+                        type: string
+                        example: null
+                      balance:
+                        type: integer
+                        example: 0
+                      status:
+                        type: string
+                        example: issuing                                                                                                                        
               example:
                 message: Card currently being generated
                 statusCode: 200
@@ -731,6 +854,16 @@ paths:
             application/json:
               schema:
                 type: object
+                properties:
+                  message:
+                    type: string
+                    example: undefined cardUser reference.
+                  statusCode:
+                    type: integer
+                    example: 500
+                  errors:
+                    type: array
+                    example: []
               example:
                 message: undefined cardUser reference.
                 statusCode: 500
