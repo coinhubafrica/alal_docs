@@ -81,237 +81,61 @@ paths:
             application/json:
               schema:
                 type: object
-              example:
-                message: OK
-                statusCode: 200
-                data:
-                  - data:
-                      - reference: 792c6cf2-f5cf-46c8-bf8c-699a9028010e
-                        card_number: null
-                        card_brand: null
-                        card_type: null
-                        cvv2: null
-                        expiry: null
-                        balance: 0
-                        status: unissued
-                      - reference: a51527bc-1c93-44ad-a4db-f68b4bed26b3
-                        card_number: null
-                        card_brand: null
-                        card_type: null
-                        cvv2: null
-                        expiry: null
-                        balance: 0
-                        status: unissued
-                      - reference: 8c27ae9b-57c8-41e8-9bcf-6530a01b77fa
-                        card_number: null
-                        card_brand: null
-                        card_type: physical
-                        cvv2: null
-                        expiry: null
-                        balance: 0
-                        status: unissued
-                      - reference: db408374-0a25-497f-b9b3-45b16c110812
-                        card_number: null
-                        card_brand: Visa
-                        card_type: virtual
-                        cvv2: null
-                        expiry: null
-                        balance: 4000
-                        status: unissued
-                      - reference: 906a11e0-f5d9-4e43-8dbb-0e792116abb0
-                        card_number: null
-                        card_brand: Visa
-                        card_type: virtual
-                        cvv2: null
-                        expiry: null
-                        balance: 1000
-                        status: unissued
-                      - reference: 9c54515e-7890-44f9-8cc2-a85b80322b98
-                        card_number: '4634716555196705'
-                        card_brand: Visa
-                        card_type: virtual
-                        cvv2: '363'
-                        expiry: 2027-06
-                        balance: 3248
-                        status: issued
-                      - reference: d282e4a6-1fb6-4827-a6ae-a780263287d7
-                        card_number: null
-                        card_brand: Visa
-                        card_type: virtual
-                        cvv2: null
-                        expiry: null
-                        balance: 0
-                        status: issuing
-                      - reference: b9f0f850-dd0b-4e3a-bf27-66f3b5ba2ae9
-                        card_number: '4174650207847260'
-                        card_brand: visa
-                        card_type: virtual
-                        cvv2: '874'
-                        expiry: '2029-12-01'
-                        balance: 0
-                        status: issuing
-                      - reference: 985ed1ca-4438-4fa7-b212-bfbeb3bb5fd2
-                        card_number: '4597783274065828'
-                        card_brand: visa
-                        card_type: virtual
-                        cvv2: '178'
-                        expiry: 2029-12
-                        balance: 0
-                        status: issuing
-                      - reference: d0c5d342-94d5-4dbd-8fe9-9d3a9de0a41a
-                        card_number: '4442477307763351'
-                        card_brand: visa
-                        card_type: virtual
-                        cvv2: '975'
-                        expiry: 2029-12
-                        balance: 500
-                        status: issued
-                      - reference: 63e77fa7-596e-4789-8fbe-77bcc266e22a
-                        card_number: '4175589539079862'
-                        card_brand: visa
-                        card_type: virtual
-                        cvv2: '472'
-                        expiry: 2029-12
-                        balance: 600
-                        status: issued
-                      - reference: 06a4c311-997d-44be-9210-f63d2e3bb18b
-                        card_number: null
-                        card_brand: visa
-                        card_type: virtual
-                        cvv2: null
-                        expiry: null
-                        balance: 0
-                        status: issuing
-                      - reference: e817b25a-d4fa-4424-83fd-ef8f4e35b591
-                        card_number: null
-                        card_brand: visa
-                        card_type: virtual
-                        cvv2: null
-                        expiry: null
-                        balance: 0
-                        status: issuing
-                      - reference: 1d930bdb-f4cb-4667-83b3-adf770797209
-                        card_number: null
-                        card_brand: Visa
-                        card_type: virtual
-                        cvv2: null
-                        expiry: null
-                        balance: 0
-                        status: issuing
-                      - reference: 15f34565-8ae7-4518-9ed8-bd5bd68343fe
-                        card_number: null
-                        card_brand: Visa
-                        card_type: virtual
-                        cvv2: null
-                        expiry: null
-                        balance: 0
-                        status: issuing
-                      - reference: a50d3f06-c3fb-4ee3-8f4e-19f4f603b2ba
-                        card_number: null
-                        card_brand: visa
-                        card_type: virtual
-                        cvv2: null
-                        expiry: null
-                        balance: 0
-                        status: issuing
-                      - reference: b4ab4699-025d-4467-a0f8-0e55c0c5e992
-                        card_number: '4695006829879245'
-                        card_brand: Visa
-                        card_type: virtual
-                        cvv2: '123'
-                        expiry: 2027-07
-                        balance: 1013.28384
-                        status: issued
-                    links:
-                      first: http://localhost:8090/api/v1/cards?per_page=20&page=1
-                      last: http://localhost:8090/api/v1/cards?per_page=20&page=1
-                      prev: null
-                      next: null
-                    meta:
-                      current_page: 1
-                      from: 1
-                      last_page: 1
-                      links:
-                        - url: null
-                          label: '&laquo; Précédent'
-                          active: false
-                        - url: >-
-                            http://localhost:8090/api/v1/cards?per_page=20&page=1
-                          label: '1'
-                          active: true
-                        - url: null
-                          label: Suivant &raquo;
-                          active: false
-                      path: http://localhost:8090/api/v1/cards
-                      per_page: 20
-                      to: 17
-                      total: 17
-  /cards/792c6cf2-f5cf-46c8-bf8c-699a9028010e:
+                properties:
+                  message:
+                    type: string
+                    example: OK
+                  statusCode:
+                    type: integer
+                    example: 200
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      xml:
+                        name: 'item'
+                      properties: 
+                        reference:
+                          type: string
+                          example: 792c6cf2-f5cf-46c8-bf8c-699a9028010e
+                        balance:
+                          type: integer
+                          example: 1000
+                        status:
+                          type: string
+                          example: issued
+                        card_type:
+                          type: string
+                          example: Visa
+                        card_brand:
+                          type: string
+                          example: physical
+                  meta:
+                    type: object
+                    properties:
+                      current_page:
+                        type: integer
+                        example: 1
+                      from:
+                        type: integer
+                        example: 1
+                      last_page:
+                        type: integer
+                        example: 1
+                      per_page:
+                        type: integer
+                        example: 20
+                      to:
+                        type: integer
+                        example: 17                      
+                      total:
+                        type: integer
+                        example: 17
+  /cards/{reference}:
     get:
       tags:
         - Cards
       summary: Show Card
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-      responses:
-        '500':
-          description: Internal Server Error
-          headers:
-            Host:
-              schema:
-                type: string
-                example: localhost:8090
-            Date:
-              schema:
-                type: string
-                example: Sun, 23 Jul 2023 16:38:23 GMT
-            Connection:
-              schema:
-                type: string
-                example: close
-            X-Powered-By:
-              schema:
-                type: string
-                example: PHP/8.2.4
-            Cache-Control:
-              schema:
-                type: string
-                example: no-cache, private
-            Content-Type:
-              schema:
-                type: string
-                example: application/json
-            X-RateLimit-Limit:
-              schema:
-                type: integer
-                example: '60'
-            X-RateLimit-Remaining:
-              schema:
-                type: integer
-                example: '58'
-            Access-Control-Allow-Origin:
-              schema:
-                type: string
-                example: '*'
-          content:
-            application/json:
-              schema:
-                type: object
-              example:
-                message: undefined card reference.
-                statusCode: 500
-                errors: []
-  /cards/6516484d-0059-4f53-b2cf-31f3ae884d3a:
-    get:
-      tags:
-        - Cards
-      summary: Fetch Card
       security:
         - bearerAuth: []
       responses:
@@ -358,6 +182,30 @@ paths:
             application/json:
               schema:
                 type: object
+                properties:
+                  message:
+                    type: string
+                    example: OK
+                  statusCode:
+                    type: integer
+                    example: 200
+                  data:
+                    properties: 
+                      reference:
+                        type: string
+                        example: 792c6cf2-f5cf-46c8-bf8c-699a9028010e
+                      balance:
+                        type: integer
+                        example: 1000
+                      status:
+                        type: string
+                        example: issued
+                      card_type:
+                        type: string
+                        example: Visa
+                      card_brand:
+                        type: string
+                        example: physical             
               example:
                 message: OK
                 statusCode: 200
@@ -414,6 +262,16 @@ paths:
             application/json:
               schema:
                 type: object
+                properties:
+                  message:
+                    type: string
+                    example: undefined card reference.
+                  statusCode:
+                    type: integer
+                    example: 500
+                  errors:
+                    type: array
+                    example: []                
               example:
                 message: undefined card reference.
                 statusCode: 500
@@ -930,6 +788,62 @@ paths:
             application/json:
               schema:
                 type: object
+                properties:
+                  message:
+                    type: string
+                    example: OK
+                  statusCode:
+                    type: integer
+                    example: 200
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      xml:
+                        name: 'item'
+                      properties: 
+                        slug:
+                          type: string
+                          example: 792c6cf2-f5cf-46c8-bf8c-699a9028010e
+                        card_reference:
+                          type: string
+                          example: 9c54515e-7890-44f9-8cc2-a85b80322b98
+                        amount:
+                          type: integer
+                          example: 1000
+                        status:
+                          type: string
+                          example: success
+                        kind:
+                          type: string
+                          example: recharge
+                        merchant:
+                          type: string
+                          example: Any                          
+                        created_at:
+                          type: string
+                          example: '2023-06-22T11:07:07.000000Z'                     
+                  meta:
+                    type: object
+                    properties:
+                      current_page:
+                        type: integer
+                        example: 1
+                      from:
+                        type: integer
+                        example: 1
+                      last_page:
+                        type: integer
+                        example: 1
+                      per_page:
+                        type: integer
+                        example: 20
+                      to:
+                        type: integer
+                        example: 17                      
+                      total:
+                        type: integer
+                        example: 17                
               example:
                 message: OK
                 statusCode: 200
@@ -1010,6 +924,16 @@ paths:
             application/json:
               schema:
                 type: object
+                properties:
+                  message:
+                    type: string
+                    example: undefined card reference.
+                  statusCode:
+                    type: integer
+                    example: 500
+                  errors:
+                    type: array
+                    example: []                  
               example:
                 message: undefined card reference.
                 statusCode: 500
@@ -1024,6 +948,19 @@ paths:
           application/json:
             schema:
               type: object
+              properties:
+                amount:
+                  type: integer
+                  example: 2000
+                cardReference:
+                  type: string
+                  example: 6516484d-0059-4f53-b2cf-31f3ae884d3a
+                reference:
+                  type: string
+                  example: b60f54d5b1-922a-40ty6a-8417-fasjhdfdfdi231i
+                action:
+                  type: string
+                  example: withdraw | recharge
               example:
                 amount: 2000
                 cardReference: 6516484d-0059-4f53-b2cf-31f3ae884d3a
@@ -1081,6 +1018,39 @@ paths:
             application/json:
               schema:
                 type: object
+                properties:
+                  message:
+                    type: string
+                    example: OK
+                  statusCode:
+                    type: integer
+                    example: 200
+                  transaction:
+                    properties: 
+                      slug:
+                        type: string
+                        example: 792c6cf2-f5cf-46c8-bf8c-699a9028010e
+                      card_reference:
+                        type: string
+                        example: 9c54515e-7890-44f9-8cc2-a85b80322b98
+                      reference:
+                        type: string
+                        example: b60f55b1-922a-406a-8417-g54atb0849ttb22c
+                      status:
+                        type: string
+                        example: pending
+                      kind:
+                        type: string
+                        example: recharge
+                      merchant:
+                        type: string
+                        example: Any 
+                      amount:
+                        type: integer
+                        example: 2000
+                      created_at:
+                        type: string
+                        example: '2023-06-22T10:40:17.000000Z'                                                                                                                                                                
               example:
                 message: OK
                 statusCode: 200
@@ -1137,6 +1107,16 @@ paths:
             application/json:
               schema:
                 type: object
+                properties:
+                  message:
+                    type: string
+                    example: La valeur du champ reference est déjà utilisée.
+                  errors:
+                    type: object
+                    properties:
+                      id_no:
+                        type: string
+                        example: La valeur du champ reference est déjà utilisée.
               example:
                 message: Bad Request
                 statusCode: 400
