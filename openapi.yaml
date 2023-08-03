@@ -3,7 +3,7 @@ info:
   title: ALAL APIs
   version: 1.0.0
 servers:
-  - url: http://{{base_url}}
+  - url: https://api.sandbox.saalal.com
 components:
   securitySchemes:
     bearerAuth:
@@ -802,7 +802,7 @@ paths:
                       xml:
                         name: 'item'
                       properties: 
-                        slug:
+                        reference:
                           type: string
                           example: 792c6cf2-f5cf-46c8-bf8c-699a9028010e
                         card_reference:
@@ -965,7 +965,7 @@ paths:
                 amount: 2000
                 cardReference: 6516484d-0059-4f53-b2cf-31f3ae884d3a
                 reference: b60f54d5b1-922a-40ty6a-8417-fasjhdfdfdi231i
-                action: withdraw
+                action: withdraw | recharge
       security:
         - bearerAuth: []
       parameters:
@@ -1190,6 +1190,68 @@ paths:
             application/json:
               schema:
                 type: object
+                properties:
+                  message:
+                    type: string
+                    example: OK
+                  statusCode:
+                    type: integer
+                    example: 200
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      xml:
+                        name: 'item'
+                      properties: 
+                        reference:
+                          type: string
+                          example: 792c6cf2-f5cf-46c8-bf8c-699a9028010e
+                        first_name:
+                          type: string
+                          example: ndeye ngone              
+                        last_name:
+                          type: string
+                          example: ndiaye                
+                        address:
+                          type: string
+                          example: rue ng 59 grand ngor                 
+                        phone:
+                          type: string
+                          example: '774964996'                  
+                        email:
+                          type: string
+                          example: ndiayendeyengone99@gmail.com                
+                        id_no:
+                          type: string
+                          example: '20119991010000621'      
+                        status:
+                          type: string
+                          example: 'verified'                                     
+                        created_at:
+                          type: string
+                          example: '2023-06-22T11:07:07.000000Z'                     
+                  meta:
+                    type: object
+                    properties:
+                      current_page:
+                        type: integer
+                        example: 1
+                      from:
+                        type: integer
+                        example: 1
+                      last_page:
+                        type: integer
+                        example: 1
+                      per_page:
+                        type: integer
+                        example: 20
+                      to:
+                        type: integer
+                        example: 17                      
+                      total:
+                        type: integer
+                        example: 17                   
               example:
                 message: OK
                 statusCode: 200
@@ -1391,7 +1453,7 @@ paths:
                       per_page: 20
                       to: 20
                       total: 45
-  /card-users/83865f93-c204-499e-b133-401d3322b242:
+  /card-users/{reference}:
     get:
       tags:
         - CardUsers
@@ -1448,6 +1510,34 @@ paths:
             application/json:
               schema:
                 type: object
+                properties: 
+                  reference:
+                    type: string
+                    example: 792c6cf2-f5cf-46c8-bf8c-699a9028010e
+                  first_name:
+                    type: string
+                    example: ndeye ngone              
+                  last_name:
+                    type: string
+                    example: ndiaye                
+                  address:
+                    type: string
+                    example: rue ng 59 grand ngor                 
+                  phone:
+                    type: string
+                    example: '774964996'                  
+                  email:
+                    type: string
+                    example: ndiayendeyengone99@gmail.com                
+                  id_no:
+                    type: string
+                    example: '20119991010000621'      
+                  status:
+                    type: string
+                    example: 'verified'                                     
+                  created_at:
+                    type: string
+                    example: '2023-06-22T11:07:07.000000Z'                  
               example:
                 message: OK
                 statusCode: 200
