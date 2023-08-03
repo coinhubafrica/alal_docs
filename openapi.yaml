@@ -1551,3 +1551,279 @@ paths:
                     phone: '221796338816'
                     email: testingboy@gmail.com
                     status: null
+  /card-users/create:
+    post:
+      tags:
+        - Cards
+      summary: Create Card User
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                first_name:
+                  type: string
+                  example: ndeye ngone              
+                last_name:
+                  type: string
+                  example: ndiaye                
+                address:
+                  type: string
+                  example: rue ng 59 grand ngor                 
+                phone:
+                  type: string
+                  example: '774964996'                  
+                email:
+                  type: string
+                  example: ndiayendeyengone99@gmail.com                
+                id_no:
+                  type: string
+                  example: '20119991010000621'                  
+                selfie_image:
+                  type: string
+                  example: https://example.com/selfie.png                  
+                id_image:
+                  type: string
+                  example: https://example.com/id.png                
+                back_id_image:
+                  type: string
+                  example: https://example.com/backid.png                
+              example:
+                first_name: ndeye ngone
+                last_name: ndiaye
+                address: rue ng 59 grand ngor
+                phone: '774964996'
+                email: ndiayendeyengone99@gmail.com
+                id_no: '20119991010000621'
+                selfie_image: >-
+                  https://bambara.coinhub.africa/storage/1311/image_picker_33DEBD5E-0F27-423F-97FC-6F86A1C44261-1364-0000006A588CEFD6.jpg
+                id_image: >-
+                  https://bambara.coinhub.africa/storage/1309/image_picker_ADCC3404-1E7F-4959-A226-262D1A23A6C0-1364-00000068CFCD2A74.jpg
+                back_id_image: >-
+                  https://bambara.coinhub.africa/storage/1310/image_picker_8156358E-64CF-431B-A803-9FCF47F14963-1364-000000691672C6D4.jpg
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: localhost:8090
+            Date:
+              schema:
+                type: string
+                example: Thu, 22 Jun 2023 10:02:42 GMT
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.2.4
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '60'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '59'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Card User verification in progress
+                  statusCode:
+                    type: integer
+                    example: 200
+                  userCard:
+                    type: object
+                    properties:
+                      reference:
+                        type: string
+                        example: 88c2f29c-2fba-40f1-a303-b33008e42fe9   
+                      first_name:
+                        type: string
+                        example: ndeye ngone              
+                      last_name:
+                        type: string
+                        example: ndiaye                
+                      address:
+                        type: string
+                        example: rue ng 59 grand ngor                 
+                      phone:
+                        type: string
+                        example: '774964996'                  
+                      email:
+                        type: string
+                        example: ndiayendeyengone99@gmail.com                
+                      id_no:
+                        type: string
+                        example: '20119991010000621'  
+              example:
+                message: OK
+                statusCode: 200
+                data:
+                  message: Card User verification in progress
+                  userCard:
+                    reference: 88c2f29c-2fba-40f1-a303-b33008e42fe9
+                    first_name: Testeur
+                    last_name: glock
+                    address: Pikine Texaco 11
+                    id_no: '17521999133211635'
+                    phone: '221776854872'
+                    email: testingboy@gmail.com
+        '422':
+          description: Unprocessable Content
+          headers:
+            Host:
+              schema:
+                type: string
+                example: localhost:8090
+            Date:
+              schema:
+                type: string
+                example: Thu, 22 Jun 2023 10:00:54 GMT
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.2.4
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '60'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '59'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: La valeur du champ id no est déjà utilisée.
+                  errors:
+                    type: object
+                    properties:
+                      id_no:
+                        type: string
+                        example: La valeur du champ id no est déjà utilisée.
+              example:
+                message: La valeur du champ id no est déjà utilisée.
+                errors:
+                  id_no:
+                    - La valeur du champ id no est déjà utilisée.
+        '500':
+          description: Internal Server Error
+          headers:
+            Server:
+              schema:
+                type: string
+                example: nginx
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Date:
+              schema:
+                type: string
+                example: Wed, 12 Jul 2023 12:43:10 GMT
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '60'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '59'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Card User creation failed
+                  statusCode:
+                    type: integer
+                    example: 500
+                  errors:
+                    type: array
+                    example: []
+              example:
+                message: Card User creation failed
+                statusCode: 500
+                errors:
+                  userCard:
+                    reference: 2baec707-ccd8-4f71-9bdd-5dab5e0ce8b8
+                    first_name: Bassirou
+                    last_name: ndao
+                    address: villa 100506 sacre coeur
+                    id_no: '10119941019000640'
+                    phone: '776440100'
+                    email: bachirnd2@gmail.com
+                    status: failed
