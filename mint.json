@@ -64,7 +64,8 @@
         "api-reference/cards/list-card",
         "api-reference/cards/show-card",
         "api-reference/cards/register-card-user",
-        "api-reference/cards/create-card"
+        "api-reference/cards/create-card",
+        "api-reference/cards/get-access-token-card"
       ]
     },
     {
