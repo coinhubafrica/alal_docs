@@ -138,6 +138,12 @@ paths:
       summary: Show Card
       security:
         - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json        
       responses:
         '200':
           description: OK
