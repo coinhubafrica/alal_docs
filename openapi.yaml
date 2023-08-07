@@ -2279,10 +2279,10 @@ paths:
                 explanation:
                   type: string
                   example: No real explanation                        
-                example:
-                  transaction_slug: 76884322-a3fb-4607-b39c-6a6d7d9c3bcc
-                  reason: duplicate
-                  explanation: No real explanation
+              example:
+                transaction_slug: 76884322-a3fb-4607-b39c-6a6d7d9c3bcc
+                reason: duplicate
+                explanation: No real explanation
       security:
         - bearerAuth: []
       parameters:
