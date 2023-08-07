@@ -82,6 +82,15 @@
         "api-reference/cardusers/show-carduser",
         "api-reference/cardusers/register-carduser"
       ]
+    },
+    {
+      "group": "Disputes",
+      "pages": [
+        "api-reference/disputes/create-dispute",
+        "api-reference/disputes/list-disputes",
+        "api-reference/disputes/show-dispute",
+        "api-reference/disputes/update-dispute"
+      ]
     }
   ],
   "footerSocials": {

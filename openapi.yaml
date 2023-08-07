@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.1.0
 info:
   title: ALAL APIs
   version: 1.0.0
@@ -13,6 +13,7 @@ tags:
   - name: Cards
   - name: Transactions
   - name: CardUsers
+  - name: Disputes
 paths:
   /cards:
     get:
@@ -1993,3 +1994,524 @@ paths:
                 message: undefined card reference.
                 statusCode: 400
                 errors: []  
+  /disputes:
+    get:
+      tags:
+        - Disputes
+      summary: List Disputes
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: per_page
+          in: query
+          schema:
+            type: integer
+          example: '20'
+      responses:
+        '200':
+          description: OK
+          headers:
+            Server:
+              schema:
+                type: string
+                example: nginx
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Vary:
+              schema:
+                type: string
+                example: Accept-Encoding
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Date:
+              schema:
+                type: string
+                example: Mon, 07 Aug 2023 16:35:18 GMT
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '60'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '58'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            Content-Encoding:
+              schema:
+                type: string
+                example: gzip
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: OK
+                  statusCode:
+                    type: integer
+                    example: 200
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      xml:
+                        name: 'item'
+                      properties: 
+                        reference:
+                          type: string
+                          example: 962b954d-bbd3-4b03-8a70-80fb595e9049
+                        transaction_reference:
+                          type: string
+                          example: 962b954d-bbd3-4b03-8a70                        
+                        status:
+                          type: string
+                          example: submitted
+                        reason:
+                          type: string
+                          example: duplicate
+                        explanation:
+                          type: string
+                          example: No real explanation even now                      
+                  meta:
+                    type: object
+                    properties:
+                      current_page:
+                        type: integer
+                        example: 1
+                      from:
+                        type: integer
+                        example: 1
+                      last_page:
+                        type: integer
+                        example: 1
+                      per_page:
+                        type: integer
+                        example: 20
+                      to:
+                        type: integer
+                        example: 17                      
+                      total:
+                        type: integer
+                        example: 17             
+              example:
+                message: OK
+                statusCode: 200
+                data:
+                  - transaction_slug: 962b954d-bbd3-4b03-8a70-80fb595e9049
+                    slug: submitted
+                    status: submitted
+                    reason: duplicate
+                    explanation: No real explanation even now
+                meta:
+                  current_page: 1
+                  from: 1
+                  last_page: 1
+                  per_page: 20
+                  to: 1
+                  total: 1
+  /disputes/{reference}:
+    get:
+      tags:
+        - Disputes
+      summary: Show Dispute
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: OK
+          headers:
+            Server:
+              schema:
+                type: string
+                example: nginx
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Vary:
+              schema:
+                type: string
+                example: Accept-Encoding
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Date:
+              schema:
+                type: string
+                example: Mon, 07 Aug 2023 16:35:44 GMT
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '60'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '59'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            Content-Encoding:
+              schema:
+                type: string
+                example: gzip
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: OK
+                  statusCode:
+                    type: integer
+                    example: 200
+                  data:
+                    type: object
+                    properties:
+                      reference:
+                        type: string
+                        example: 962b954d-bbd3-4b03-8a70-80fb595e9049
+                      transaction_reference:
+                        type: string
+                        example: 962b954d-bbd3-4b03-8a70                        
+                      status:
+                        type: string
+                        example: submitted
+                      reason:
+                        type: string
+                        example: duplicate
+                      explanation:
+                        type: string
+                        example: No real explanation even now     
+              example:
+                message: OK
+                statusCode: 200
+                data:
+                  dispute:
+                    transaction_slug: 962b954d-bbd3-4b03-8a70-80fb595e9049
+                    slug: SBkRUq6GDCf0sdFc1LFU
+                    status: submitted
+                    reason: duplicate
+                    explanation: No real explanation even now
+  /disputes/create:
+    post:
+      tags:
+        - Disputes
+      summary: Create Dispute
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                transaction_reference:
+                  type: string
+                  example: 962b954d-bbd3-4b03-8a70-80fb595e9049
+                reason:
+                  type: string
+                  example: duplicate
+                explanation:
+                  type: string
+                  example: No real explanation                        
+                example:
+                  transaction_slug: 76884322-a3fb-4607-b39c-6a6d7d9c3bcc
+                  reason: duplicate
+                  explanation: No real explanation
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: OK
+          headers:
+            Server:
+              schema:
+                type: string
+                example: nginx
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Vary:
+              schema:
+                type: string
+                example: Accept-Encoding
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Date:
+              schema:
+                type: string
+                example: Mon, 07 Aug 2023 15:52:59 GMT
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '60'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '59'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            Content-Encoding:
+              schema:
+                type: string
+                example: gzip
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: dispute successfully created!
+                  statusCode:
+                    type: integer
+                    example: 200
+                  data:
+                    type: object
+                    properties:
+                      reference:
+                        type: string
+                        example: 962b954d-bbd3-4b03-8a70-80fb595e9049
+                      transaction_reference:
+                        type: string
+                        example: 962b954d-bbd3-4b03-8a70                        
+                      status:
+                        type: string
+                        example: submitted
+                      reason:
+                        type: string
+                        example: duplicate
+                      explanation:
+                        type: string
+                        example: No real explanation even now                     
+              example:
+                message: dispute successfully created!
+                statusCode: 200
+                data:
+                  - transaction_slug: 962b954d-bbd3-4b03-8a70-80fb595e9049
+                    slug: 962b954d-bbd3-4b03-8a70
+                    status: submitted
+                    reason: duplicate
+                    explanation: No real explanation
+  /disputes/update/{reference}:
+    post:
+      tags:
+        - Disputes
+      summary: Update Dispute
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                transaction_reference:
+                  type: string
+                  example: 962b954d-bbd3-4b03-8a70-80fb595e9049
+                explanation:
+                  type: string
+                  example: No real explanation even now              
+                example:
+                  transaction_slug: 962b954d-bbd3-4b03-8a70-80fb595e9049
+                  explanation: No real explanation even now
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: OK
+          headers:
+            Server:
+              schema:
+                type: string
+                example: nginx
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Vary:
+              schema:
+                type: string
+                example: Accept-Encoding
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Date:
+              schema:
+                type: string
+                example: Mon, 07 Aug 2023 16:34:27 GMT
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '60'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '59'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            Content-Encoding:
+              schema:
+                type: string
+                example: gzip
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                      type: string
+                      example: dispute successfully updated!
+                  statusCode:
+                    type: integer
+                    example: 200
+                  data:
+                    type: object
+                    properties:
+                      reference:
+                        type: string
+                        example: 962b954d-bbd3-4b03-8a70-80fb595e9049
+                      transaction_reference:
+                        type: string
+                        example: 962b954d-bbd3-4b03-8a70                        
+                      status:
+                        type: string
+                        example: submitted
+                      reason:
+                        type: string
+                        example: duplicate
+                      explanation:
+                        type: string
+                        example: No real explanation even now                       
+              example:
+                message: dispute successfully updated!
+                statusCode: 200
+                data:
+                  - transaction_slug: 962b954d-bbd3-4b03-8a70-80fb595e9049
+                    slug: {reference}
+                    status: submitted
+                    reason: duplicate
+                    explanation: No real explanation even now                
