@@ -2405,10 +2405,13 @@ paths:
                   example: 962b954d-bbd3-4b03-8a70-80fb595e9049
                 explanation:
                   type: string
-                  example: No real explanation even now              
-                example:
-                  transaction_slug: 962b954d-bbd3-4b03-8a70-80fb595e9049
-                  explanation: No real explanation even now
+                  example: No real explanation even now
+                reason:
+                  type: string
+                  enum: [duplicate, not_received, fraudulent, product_not_as_described, service_not_as_described, canceled, other]                               
+              example:
+                transaction_slug: 962b954d-bbd3-4b03-8a70-80fb595e9049
+                explanation: No real explanation even now
       security:
         - bearerAuth: []
       parameters:
