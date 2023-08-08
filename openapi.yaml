@@ -2106,7 +2106,7 @@ paths:
                           example: submitted
                         reason:
                           type: string
-                          example: duplicate
+                          enum: [duplicate, not_received, fraudulent, product_not_as_described, service_not_as_described, canceled, other]
                         explanation:
                           type: string
                           example: No real explanation even now                      
@@ -2245,7 +2245,7 @@ paths:
                         example: submitted
                       reason:
                         type: string
-                        example: duplicate
+                        enum: [duplicate, not_received, fraudulent, product_not_as_described, service_not_as_described, canceled, other]
                       explanation:
                         type: string
                         example: No real explanation even now     
@@ -2275,7 +2275,7 @@ paths:
                   example: 962b954d-bbd3-4b03-8a70-80fb595e9049
                 reason:
                   type: string
-                  example: duplicate
+                  enum: [duplicate, not_received, fraudulent, product_not_as_described, service_not_as_described, canceled, other]
                 explanation:
                   type: string
                   example: No real explanation                        
@@ -2376,7 +2376,7 @@ paths:
                         example: submitted
                       reason:
                         type: string
-                        example: duplicate
+                        enum: [duplicate, not_received, fraudulent, product_not_as_described, service_not_as_described, canceled, other]
                       explanation:
                         type: string
                         example: No real explanation even now                     
@@ -2502,7 +2502,7 @@ paths:
                         example: submitted
                       reason:
                         type: string
-                        example: duplicate
+                        enum: [duplicate, not_received, fraudulent, product_not_as_described, service_not_as_described, canceled, other]
                       explanation:
                         type: string
                         example: No real explanation even now                       
