@@ -745,12 +745,22 @@ paths:
           in: header
           schema:
             type: string
-          example: application/json
+          example: application/json          
         - name: card_reference
           in: query
           schema:
             type: string
           example: 6516484d-0059-4f53-b2cf-31f3ae884d3a
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: per_page
+          in: query
+          schema:
+            type: integer
+          example: '20'        
       responses:
         '200':
           description: OK
@@ -762,7 +772,7 @@ paths:
             Date:
               schema:
                 type: string
-                example: Thu, 22 Jun 2023 11:33:18 GMT
+                example: Wed, 26 Jul 2023 18:49:30 GMT
             Connection:
               schema:
                 type: string
@@ -888,63 +898,6 @@ paths:
                       merchant: false
                       amount: 1000
                       created_at: '2023-06-22T11:25:37.000000Z'
-        '500':
-          description: Internal Server Error
-          headers:
-            Host:
-              schema:
-                type: string
-                example: localhost:8090
-            Date:
-              schema:
-                type: string
-                example: Thu, 22 Jun 2023 11:52:01 GMT
-            Connection:
-              schema:
-                type: string
-                example: close
-            X-Powered-By:
-              schema:
-                type: string
-                example: PHP/8.2.4
-            Cache-Control:
-              schema:
-                type: string
-                example: no-cache, private
-            Content-Type:
-              schema:
-                type: string
-                example: application/json
-            X-RateLimit-Limit:
-              schema:
-                type: integer
-                example: '60'
-            X-RateLimit-Remaining:
-              schema:
-                type: integer
-                example: '58'
-            Access-Control-Allow-Origin:
-              schema:
-                type: string
-                example: '*'
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  message:
-                    type: string
-                    example: undefined card reference.
-                  statusCode:
-                    type: integer
-                    example: 500
-                  errors:
-                    type: array
-                    example: []                  
-              example:
-                message: undefined card reference.
-                statusCode: 500
-                errors: []
   /transactions/create:
     post:
       tags:
