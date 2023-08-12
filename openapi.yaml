@@ -722,7 +722,7 @@ paths:
     post:
       tags:
         - Transactions
-      summary: TopUp or Withdraw Card
+      summary: Create Transaction
       requestBody:
         content:
           application/json:
