@@ -1559,12 +1559,6 @@ paths:
                 reference: ed7e61b6-94c9-4716-adc9-74a19db8a8e
       security:
         - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
       responses:
         '200':
           description: OK
