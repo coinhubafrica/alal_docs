@@ -149,10 +149,10 @@ paths:
         '200':
           description: OK
           headers:
-            Host:
+            Server:
               schema:
                 type: string
-                example: localhost:8090
+                example: nginx
             Date:
               schema:
                 type: string
