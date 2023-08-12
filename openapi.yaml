@@ -452,10 +452,10 @@ paths:
                   example: 141cdcbb-df5b-4a40-b8fa-739415f1f66c
                 cardBrand:
                   type: string
-                  example: visa
+                  enum: [visa, mastercard]
                 cardType:
                   type: string
-                  example: virtual
+                  enum: [virtual, physical]
               example:
                 cardUserReference: 141cdcbb-df5b-4a40-b8fa-739415f1f66c
                 cardBrand: visa
@@ -740,12 +740,12 @@ paths:
                   example: b60f54d5b1-922a-40ty6a-8417-fasjhdfdfdi231i
                 action:
                   type: string
-                  example: withdraw | recharge
+                  enum: [withdraw, recharge]
               example:
                 amount: 2000
                 cardReference: 6516484d-0059-4f53-b2cf-31f3ae884d3a
                 reference: b60f54d5b1-922a-40ty6a-8417-fasjhdfdfdi231i
-                action: withdraw | recharge
+                action: [withdraw, recharge]
       security:
         - bearerAuth: []
       parameters:
@@ -1647,60 +1647,6 @@ paths:
                 statusCode: 200
                 data:
                   access_token: N72VeyZQ8dmn3a0Wk0blu2a1pjFjdcNOx2Ec5bm39pFGa33gGu
-        '400':
-          description: Bad Request
-          headers:
-            Server:
-              schema:
-                type: string
-                example: nginx
-            Content-Type:
-              schema:
-                type: string
-                example: application/json
-            Transfer-Encoding:
-              schema:
-                type: string
-                example: chunked
-            Connection:
-              schema:
-                type: string
-                example: keep-alive
-            Cache-Control:
-              schema:
-                type: string
-                example: no-cache, private
-            Date:
-              schema:
-                type: string
-                example: Fri, 04 Aug 2023 12:31:55 GMT
-            X-RateLimit-Limit:
-              schema:
-                type: integer
-                example: '60'
-            X-RateLimit-Remaining:
-              schema:
-                type: integer
-                example: '59'
-            Access-Control-Allow-Origin:
-              schema:
-                type: string
-                example: '*'
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  message:
-                    type: string
-                    example: undefined card reference.
-                  errors:
-                    type: array
-                    example: []            
-              example:
-                message: undefined card reference.
-                statusCode: 400
-                errors: []  
   /disputes:
     get:
       tags:
