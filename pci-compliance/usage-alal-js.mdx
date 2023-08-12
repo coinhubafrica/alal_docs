@@ -14,7 +14,7 @@ Le processus suivant décrit comment Alal.js injecte les iframes dans votre appl
 ![ALAL JS description](/images/alaljs.png)
 
 1. Le back-end de votre application demande un jeton d'accès client (Access Token) [Get Access Token Card API Reference](/api-reference/cards/get-access-token-card).
-2. L'API de ALAL crée un jeton d'accès. Ce jeton permet d'accéder à la carte spécifiée et expire au bout de cinq minutes.
+2. L'API de ALAL crée un jeton d'accès. Ce jeton permet d'accéder à la carte spécifiée et expire au bout de 24 heures
 3. Votre back-end transmet le jeton d'accès client à votre JavaScript.
 4. Votre JavaScript injecte le jeton d'accès client dans la méthode `alal.bootstrap()` par l'intermédiaire d'un objet de configuration.
 5. Votre JavaScript exécute `alal.bootstrap()`, qui initialise et configure Alal.js.
@@ -41,7 +41,7 @@ La méthode `.bootstrap()` de `Alal.js` nécessite un objet de configuration, qu
   <div id="custom-card-pan"></div>
   <div id="custom-card-exp"></div>
   <div id="custom-card-cvv"></div>
-  <script src="/js/1.0.1/alal.js"></script>
+  <script src="https://www.sandbox.saalal.com/js/1.0.1/alal.js"></script>
   <script>
     // Usage of the library with showPan and its options
     alal.bootstrap({

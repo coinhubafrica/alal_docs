@@ -3,7 +3,107 @@ title: "Paramètres de Alal.js"
 description: "La méthode `.bootstrap()` de Alal.js nécessite un objet de configuration, qui définit les attributs et les comportements des iframes. "
 ---
 
-```js
+## Paramétres de la méthode `.bootstrap()`
+
+### clientAccessToken
+
+`clientAccessToken` est le jeton qui permet d’accéder à la carte spécifiée, elle expire au bout de 24 heures. [Get Access Token Card API Reference](/api-reference/cards/get-access-token-card)
+
+<ParamField body="clientAccessToken" type="string" required>
+  Jeton d'identification de la carte
+</ParamField>
+
+### showPan
+
+`showPan` permet d'afficher le numéro de carte
+
+<ParamField body="cardPan" type="Object" required>
+  <Expandable title="properties">
+    <ParamField body="domId" type="string" required>
+      Associe le numéro de carte à l'élément div correspondant.
+    </ParamField>
+    <ParamField body="onCopySuccess" type="Function">
+      Exécuté en cas de succès de la copie du numéro de carte.
+    </ParamField>
+    <ParamField body="onCopyFailure" type="Function">
+      Exécuté en cas d'échec de la copie du numéro de carte.
+    </ParamField>
+    <ParamField body="styles" type="Object">
+      Permet de modifier le CSS associé au numéro de carte. \
+      **Valeurs acceptées**: `color`, `font-family`, `font-size`, `font-weight`,
+      `background`
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+### showExp
+
+`showExp` permet d'afficher la date d'expiration de la carte
+
+<ParamField body="cardExp" type="Object" required>
+  <Expandable title="properties">
+    <ParamField body="domId" type="string" required>
+      Associe la date d'expiration de carte à l'élément div correspondant.
+    </ParamField>
+    <ParamField body="onCopySuccess" type="Function">
+      Exécuté en cas de succès de la copie de la date d'expiration.
+    </ParamField>
+    <ParamField body="onCopyFailure" type="Function">
+      Exécuté en cas d'échec de la copie de la date d'expiration.
+    </ParamField>
+    <ParamField body="styles" type="Object">
+      Permet de modifier le CSS associé à la date d'expiration. \
+      **Valeurs  acceptées**: `color`, `font-family`, `font-size`, `font-weight`,
+      `background`
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+### showCvv
+
+`showCvv` permet d'afficher la showCvv de la carte
+
+<ParamField body="cardCvv" type="Object" required>
+  <Expandable title="properties">
+    <ParamField body="domId" type="string" required>
+      Associe le CVV de carte à l'élément div correspondant.
+    </ParamField>
+    <ParamField body="onCopySuccess" type="Function">
+      Exécuté en cas de succès de la copie du CVV.
+    </ParamField>
+    <ParamField body="onCopyFailure" type="Function">
+      Exécuté en cas d'échec de la copie du CVV.
+    </ParamField>
+    <ParamField body="styles" type="Object">
+      Permet de modifier le CSS associé au CVV. \
+      **Valeurs acceptées**: `color`, `font-family`, `font-size`, `font-weight`, `background`
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+## Example
+
+<CodeGroup>
+```html index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+  <div id="custom-card-pan"></div>
+  <div id="custom-card-exp"></div>
+  <div id="custom-card-cvv"></div>
+  <script src="https://www.sandbox.saalal.com/js/1.0.1/alal.js"></script>
+  <script src="/app.js"></script>
+<body>
+</html>
+```
+```javascript app.js
 // Usage of the library with showPan and its options
 alal.bootstrap({
   clientAccessToken: "LPOqDVAcTQCx7Lt7Iq83WxFQcntk6gtNpz1u7eWAvGOI5OjdQ",
@@ -12,7 +112,13 @@ alal.bootstrap({
       domId: "custom-card-pan",
       onCopySuccess: () => alert("Copied PAN!"),
       onCopyFailure: (error) => console.error(error),
-      styles: {},
+      styles: {
+        color: "green",
+        "font-family": "monospace",
+        "font-size": "10px",
+        "font-weight": "bold",
+        "background": "transparent",
+      },
     },
   },
   showExp: {
@@ -41,3 +147,4 @@ alal.bootstrap({
   },
 });
 ```
+</CodeGroup>
