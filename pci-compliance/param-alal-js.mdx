@@ -22,6 +22,19 @@ description: "La méthode `.bootstrap()` de Alal.js nécessite un objet de confi
     <ParamField body="domId" type="string" required>
       Associe le numéro de carte à l'élément div correspondant.
     </ParamField>
+    <ParamField body="styles" type="Object">
+      Permet de modifier le CSS associé au numéro de carte. \
+      **Valeurs acceptées**: `color`, `font-family`, `font-size`, `font-weight`,
+      `background`
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+<ParamField body="copyCardPan" type="Object" required>
+  <Expandable title="properties">
+    <ParamField body="domId" type="string" required>
+      Associe le numéro de carte à l'élément div correspondant.
+    </ParamField>
     <ParamField body="onCopySuccess" type="Function">
       Exécuté en cas de succès de la copie du numéro de carte.
     </ParamField>
@@ -30,7 +43,7 @@ description: "La méthode `.bootstrap()` de Alal.js nécessite un objet de confi
     </ParamField>
     <ParamField body="styles" type="Object">
       Permet de modifier le CSS associé au numéro de carte. \
-      **Valeurs acceptées**: `color`, `font-family`, `font-size`, `font-weight`,
+      **Valeurs acceptées**: `color`,
       `background`
     </ParamField>
   </Expandable>
@@ -45,15 +58,28 @@ description: "La méthode `.bootstrap()` de Alal.js nécessite un objet de confi
     <ParamField body="domId" type="string" required>
       Associe la date d'expiration de carte à l'élément div correspondant.
     </ParamField>
-    <ParamField body="onCopySuccess" type="Function">
-      Exécuté en cas de succès de la copie de la date d'expiration.
-    </ParamField>
-    <ParamField body="onCopyFailure" type="Function">
-      Exécuté en cas d'échec de la copie de la date d'expiration.
-    </ParamField>
     <ParamField body="styles" type="Object">
       Permet de modifier le CSS associé à la date d'expiration. \
       **Valeurs  acceptées**: `color`, `font-family`, `font-size`, `font-weight`,
+      `background`
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+<ParamField body="copyCardExp" type="Object" required>
+  <Expandable title="properties">
+    <ParamField body="domId" type="string" required>
+      Associe le numéro de carte à l'élément div correspondant.
+    </ParamField>
+    <ParamField body="onCopySuccess" type="Function">
+      Exécuté en cas de succès de la copie du numéro de carte.
+    </ParamField>
+    <ParamField body="onCopyFailure" type="Function">
+      Exécuté en cas d'échec de la copie du numéro de carte.
+    </ParamField>
+    <ParamField body="styles" type="Object">
+      Permet de modifier le CSS associé au numéro de carte. \
+      **Valeurs acceptées**: `color`,
       `background`
     </ParamField>
   </Expandable>
@@ -68,15 +94,28 @@ description: "La méthode `.bootstrap()` de Alal.js nécessite un objet de confi
     <ParamField body="domId" type="string" required>
       Associe le CVV de carte à l'élément div correspondant.
     </ParamField>
-    <ParamField body="onCopySuccess" type="Function">
-      Exécuté en cas de succès de la copie du CVV.
-    </ParamField>
-    <ParamField body="onCopyFailure" type="Function">
-      Exécuté en cas d'échec de la copie du CVV.
-    </ParamField>
     <ParamField body="styles" type="Object">
       Permet de modifier le CSS associé au CVV. \
       **Valeurs acceptées**: `color`, `font-family`, `font-size`, `font-weight`, `background`
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+<ParamField body="copyCardExp" type="Object" required>
+  <Expandable title="properties">
+    <ParamField body="domId" type="string" required>
+      Associe le numéro de carte à l'élément div correspondant.
+    </ParamField>
+    <ParamField body="onCopySuccess" type="Function">
+      Exécuté en cas de succès de la copie du numéro de carte.
+    </ParamField>
+    <ParamField body="onCopyFailure" type="Function">
+      Exécuté en cas d'échec de la copie du numéro de carte.
+    </ParamField>
+    <ParamField body="styles" type="Object">
+      Permet de modifier le CSS associé au numéro de carte. \
+      **Valeurs acceptées**: `color`,
+      `background`
     </ParamField>
   </Expandable>
 </ParamField>
@@ -96,8 +135,13 @@ description: "La méthode `.bootstrap()` de Alal.js nécessite un objet de confi
 <body>
 
   <div id="custom-card-pan"></div>
+  <div id='copy-pan-container'></div>
+  
   <div id="custom-card-exp"></div>
+  <div id='copy-exp-container'></div>
+
   <div id="custom-card-cvv"></div>
+  <div id='copy-cvv-container'></div>
   <script src="https://www.sandbox.saalal.com/js/1.0.1/alal.js"></script>
   <script src="/app.js"></script>
 <body>
@@ -106,45 +150,70 @@ description: "La méthode `.bootstrap()` de Alal.js nécessite un objet de confi
 ```javascript app.js
 // Usage of the library with showPan and its options
 alal.bootstrap({
-  clientAccessToken: "LPOqDVAcTQCx7Lt7Iq83WxFQcntk6gtNpz1u7eWAvGOI5OjdQ",
+  clientAccessToken: "live_MvlIyIQZXyaacuuUSajfx1le0CnKTeUgrUF1d0aEi1nEDGcbWB",
   showPan: {
     cardPan: {
       domId: "custom-card-pan",
-      onCopySuccess: () => alert("Copied PAN!"),
-      onCopyFailure: (error) => console.error(error),
       styles: {
-        color: "green",
+        "color": "green",
         "font-family": "monospace",
         "font-size": "10px",
         "font-weight": "bold",
-        "background": "transparent",
+        "background": "transparent"
       },
     },
+    copyCardPan: {
+      domId: "copy-pan-container",
+      onCopySuccess: copyCardPanSuccess = () => alert("Copied PAN!"),
+      onCopyFailure: copyCardPanFailure = error => console.error(error),
+      styles: {
+        color: "white",
+        "background": "red"
+      }
+    }
   },
   showExp: {
     cardExp: {
       domId: "custom-card-exp",
-      onCopySuccess: () => alert("Copied Exp!"),
-      onCopyFailure: (error) => console.error(error),
-      styles: {},
+      styles: {
+        "color": "green",
+        "font-family": "monospace",
+        "font-size": "10px",
+        "font-weight": "bold",
+        "background": "transparent"
+      },
     },
+    copyCardExp: {
+      domId: "copy-exp-container",
+      onCopySuccess: copyCardPanSuccess = () => alert("Copied Exp!"),
+      onCopyFailure: copyCardPanFailure = error => console.error(error),
+    }
   },
   showCvv: {
     cardCvv: {
       domId: "custom-card-cvv",
-      onCopySuccess: () => alert("Copied CVV!"),
-      onCopyFailure: (error) => console.error(error),
-      styles: {},
+      styles: {
+        "color": "green",
+        "font-family": "monospace",
+        "font-size": "10px",
+        "font-weight": "bold",
+        "background": "transparent"
+      },
     },
+    copyCardCvv: {
+      domId: "copy-cvv-container",
+      onCopySuccess: copyCardPanSuccess = () => alert("Copied CVV!"),
+      onCopyFailure: copyCardPanFailure = error => console.error(error),
+    }
   },
   callbackEvents: {
     onSuccess: () => {
-      console.log("Success!");
+      console.log("Success!")
     },
-    onFailure: (error) => {
+    onFailure: error => {
       console.error(error);
-    },
-  },
+    }
+  }
 });
 ```
 </CodeGroup>
