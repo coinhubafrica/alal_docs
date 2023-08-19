@@ -102,6 +102,9 @@ paths:
                         balance:
                           type: integer
                           example: 1000
+                        last_four:
+                          type: string
+                          example: "1214"                          
                         status:
                           type: string
                           example: issued
@@ -204,6 +207,9 @@ paths:
                       balance:
                         type: integer
                         example: 1000
+                      last_four:
+                        type: string
+                        example: "1987"  
                       status:
                         type: string
                         example: issued
@@ -519,21 +525,12 @@ paths:
                       reference:
                         type: string
                         example: d282e4a6-1fb6-4827-a6ae-a780263287d7
-                      card_number:
-                        type: string
-                        example: null
                       card_brand:
                         type: string
                         example: Visa
                       card_type:
                         type: string
                         example: virtual
-                      cvv2: 
-                        type: string
-                        example: null
-                      expiry:
-                        type: string
-                        example: null
                       balance:
                         type: integer
                         example: 0
