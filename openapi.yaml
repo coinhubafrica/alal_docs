@@ -1552,6 +1552,9 @@ paths:
                 reference:
                   type: string
                   example: ed7e61b6-94c9-4716-adc9-74a19db8a8e
+                css_url:
+                  type: string
+                  example: https://example.com/alal.css               
               example:
                 reference: ed7e61b6-94c9-4716-adc9-74a19db8a8e
       security:
@@ -1633,6 +1636,9 @@ paths:
                       access_token:
                         type: string
                         example: N72VeyZQ8dmn3a0Wk0blu2a1pjFjdcNOx2Ec5bm39pFGa33gGu              
+                      embedded_ui:
+                        type: string
+                        example: https://sandbox.saalal.com/embedded-card-reveal/test_Q347N1z2kHuUTlrUPoYR1rSsmkl1FbiY5GhN8TAwBtqdvqo1QB              
               example:
                 message: Access Token generated successfully
                 statusCode: 200

@@ -48,7 +48,11 @@
     },
     {
       "group": "PCI Compliance",
-      "pages": ["pci-compliance/usage-alal-js", "pci-compliance/param-alal-js"]
+      "pages": [
+        "pci-compliance/usage-alal-js",
+        "pci-compliance/param-alal-js",
+        "pci-compliance/embedded-ui-card"
+      ]
     },
     {
       "group": "Webhooks",
