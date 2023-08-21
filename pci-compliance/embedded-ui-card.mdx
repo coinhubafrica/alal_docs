@@ -12,7 +12,13 @@ Le processus suivant décrit comment Alal Card UI fonctionne :
 
 1. Le backend de votre application soumet la référence de la carte ainsi l'url vers un fichier css et requiert la création de la page via [Get Access Token Card API Reference](/api-reference/cards/get-access-token-card)
 
+<Note>
+  Lorsque vous souhaitez modifier le CSS de la carte, modifier juste le CSS
+  sur votre backend et soumettez à nouveau l'url via [Get Access Token Card
+  API Reference](/api-reference/cards/get-access-token-card)
+</Note>
 <CodeGroup>
+
 ```bash Request
 curl --location 'https://sandbox.saalal.com/api/v1/cards/auth/access_token' \
 --header 'Accept: application/json' \
@@ -171,10 +177,5 @@ curl --location 'https://sandbox.saalal.com/api/v1/cards/auth/access_token' \
 ```
 
 3. Et voila !
-   <Note>
-     Lorsque vous souhaitez modifier le CSS de la carte, modifier juste le CSS
-     sur votre backend et soumettez à nouveau l'url via [Get Access Token Card
-     API Reference](/api-reference/cards/get-access-token-card)
-   </Note>
 
 ![Embedded UI](/images/embedded-ui.png)
