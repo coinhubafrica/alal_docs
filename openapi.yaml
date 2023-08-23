@@ -732,9 +732,6 @@ paths:
                 cardReference:
                   type: string
                   example: 6516484d-0059-4f53-b2cf-31f3ae884d3a
-                reference:
-                  type: string
-                  example: b60f54d5b1-922a-40ty6a-8417-fasjhdfdfdi231i
                 action:
                   type: string
                   enum: [withdraw, recharge]
