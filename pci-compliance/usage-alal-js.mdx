@@ -27,7 +27,9 @@ Le processus suivant décrit comment Alal.js injecte les iframes dans votre appl
 
 La méthode `.bootstrap()` de `Alal.js` nécessite un objet de configuration, qui définit les attributs et les comportements des iframes. Vous devez inclure l'ID de l'élément "div" dans lequel Alal.js injecte les différents iframes de données de carte.
 
-```HTML
+
+<CodeGroup>
+```html index.html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,47 +41,85 @@ La méthode `.bootstrap()` de `Alal.js` nécessite un objet de configuration, qu
 <body>
 
   <div id="custom-card-pan"></div>
+  <div id='copy-pan-container'></div>
+  
   <div id="custom-card-exp"></div>
+  <div id='copy-exp-container'></div>
+
   <div id="custom-card-cvv"></div>
+  <div id='copy-cvv-container'></div>
   <script src="https://www.sandbox.saalal.com/js/1.0.1/alal.js"></script>
-  <script>
-    // Usage of the library with showPan and its options
-    alal.bootstrap({
-      clientAccessToken: "LPOqDVAcTQCx7Lt7Iq83WxFQcntk6gtNpz1u7eWAvGOI5OjdQ",
-      showPan: {
-        cardPan: {
-          domId: "custom-card-pan",
-          onCopySuccess: () => alert("Copied PAN!"),
-          onCopyFailure: error => console.error(error),
-          styles: {},
-        },
-      },
-      showExp: {
-        cardExp: {
-          domId: "custom-card-exp",
-          onCopySuccess: () => alert("Copied Exp!"),
-          onCopyFailure: error => console.error(error),
-          styles: {},
-        },
-      },
-      showCvv: {
-        cardCvv: {
-          domId: "custom-card-cvv",
-          onCopySuccess: () => alert("Copied CVV!"),
-          onCopyFailure: error => console.error(error),
-          styles: {},
-        },
-      },
-      callbackEvents: {
-        onSuccess: () => {
-          console.log("Success!")
-        },
-        onFailure: error => {
-          console.error(error);
-        }
-      }
-    });
-  </script>
-</body>
+  <script src="/app.js"></script>
+<body>
 </html>
 ```
+```javascript app.js
+// Usage of the library with showPan and its options
+alal.bootstrap({
+  clientAccessToken: "live_MvlIyIQZXyaacuuUSajfx1le0CnKTeUgrUF1d0aEi1nEDGcbWB",
+  showPan: {
+    cardPan: {
+      domId: "custom-card-pan",
+      styles: {
+        "color": "green",
+        "font-family": "monospace",
+        "font-size": "10px",
+        "font-weight": "bold",
+        "background": "transparent"
+      },
+    },
+    copyCardPan: {
+      domId: "copy-pan-container",
+      onCopySuccess: copyCardPanSuccess = () => alert("Copied PAN!"),
+      onCopyFailure: copyCardPanFailure = error => console.error(error),
+      styles: {
+        color: "white",
+        "background": "red"
+      }
+    }
+  },
+  showExp: {
+    cardExp: {
+      domId: "custom-card-exp",
+      styles: {
+        "color": "green",
+        "font-family": "monospace",
+        "font-size": "10px",
+        "font-weight": "bold",
+        "background": "transparent"
+      },
+    },
+    copyCardExp: {
+      domId: "copy-exp-container",
+      onCopySuccess: copyCardPanSuccess = () => alert("Copied Exp!"),
+      onCopyFailure: copyCardPanFailure = error => console.error(error),
+    }
+  },
+  showCvv: {
+    cardCvv: {
+      domId: "custom-card-cvv",
+      styles: {
+        "color": "green",
+        "font-family": "monospace",
+        "font-size": "10px",
+        "font-weight": "bold",
+        "background": "transparent"
+      },
+    },
+    copyCardCvv: {
+      domId: "copy-cvv-container",
+      onCopySuccess: copyCardPanSuccess = () => alert("Copied CVV!"),
+      onCopyFailure: copyCardPanFailure = error => console.error(error),
+    }
+  },
+  callbackEvents: {
+    onSuccess: () => {
+      console.log("Success!")
+    },
+    onFailure: error => {
+      console.error(error);
+    }
+  }
+});
+```
+</CodeGroup>
