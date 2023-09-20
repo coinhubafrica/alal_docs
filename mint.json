@@ -59,6 +59,10 @@
       "pages": ["webhooks/overview"]
     },
     {
+      "group": "Intégrations",
+      "pages": ["integrations/integration"]
+    },
+    {
       "group": "API Documentation",
       "pages": ["api-reference/authentication"]
     },
