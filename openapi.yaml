@@ -3,7 +3,7 @@ info:
   title: ALAL APIs
   version: 1.0.0
 servers:
-  - url: https://api.sandbox.saalal.com
+  - url: https://api.sandbox.saalal.com/v1
 components:
   securitySchemes:
     bearerAuth:
