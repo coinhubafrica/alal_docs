@@ -453,19 +453,19 @@ paths:
             schema:
               type: object
               properties:
-                cardUserReference:
+                card_user_reference:
                   type: string
                   example: 141cdcbb-df5b-4a40-b8fa-739415f1f66c
-                cardBrand:
+                card_brand:
                   type: string
                   enum: [visa, mastercard]
-                cardType:
+                card_type:
                   type: string
                   enum: [virtual, physical]
               example:
-                cardUserReference: 141cdcbb-df5b-4a40-b8fa-739415f1f66c
-                cardBrand: visa
-                cardType: virtual
+                card_user_reference: 141cdcbb-df5b-4a40-b8fa-739415f1f66c
+                card_brand: visa
+                card_type: virtual
       security:
         - bearerAuth: []
       responses:
@@ -729,7 +729,7 @@ paths:
                 amount:
                   type: integer
                   example: 2000
-                cardReference:
+                card_reference:
                   type: string
                   example: 6516484d-0059-4f53-b2cf-31f3ae884d3a
                 action:
@@ -737,7 +737,7 @@ paths:
                   enum: [withdraw, recharge]
               example:
                 amount: 2000
-                cardReference: 6516484d-0059-4f53-b2cf-31f3ae884d3a
+                card_reference: 6516484d-0059-4f53-b2cf-31f3ae884d3a
                 reference: b60f54d5b1-922a-40ty6a-8417-fasjhdfdfdi231i
                 action: [withdraw, recharge]
       security:
