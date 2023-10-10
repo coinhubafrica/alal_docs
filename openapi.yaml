@@ -458,7 +458,7 @@ paths:
                   example: 141cdcbb-df5b-4a40-b8fa-739415f1f66c
                 card_brand:
                   type: string
-                  enum: [visa, mastercard]
+                  enum: [visa, mastercard, gim]
                 card_type:
                   type: string
                   enum: [virtual, physical]
