@@ -1153,14 +1153,20 @@ paths:
                 card_reference:
                   type: string
                   example: 6516484d-0059-4f53-b2cf-31f3ae884d3a
+                receiver_card_reference (only for transfer):
+                  type: string
+                  example: a7517090-79b9-4af5-8c56-861ae221ae8c
+                slug:
+                  type: string
+                  example: 2b5c73c7-de46-4ecc-a1f8-1783dc262dc1
                 action:
                   type: string
-                  enum: [withdraw, recharge]
+                  enum: [withdraw, recharge, transfer]
               example:
                 amount: 2000
                 card_reference: 6516484d-0059-4f53-b2cf-31f3ae884d3a
                 reference: b60f54d5b1-922a-40ty6a-8417-fasjhdfdfdi231i
-                action: [withdraw, recharge]
+                action: [withdraw, recharge, transfer]
       security:
         - bearerAuth: []
       parameters:
