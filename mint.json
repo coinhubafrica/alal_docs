@@ -55,11 +55,8 @@
       ]
     },
     {
-      "group": "Individuel (KYC)",
-      "pages": [
-        "kyc/alal-kyc",
-        "kyc/usage"
-      ]
+      "group": "Individuel (KYC) [Bêta]",
+      "pages": ["kyc/alal-kyc", "kyc/usage"]
     },
     {
       "group": "Webhooks",
