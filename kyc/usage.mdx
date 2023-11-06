@@ -1,0 +1,147 @@
+---
+title: "Utilisation KYC UI"
+description: "Une démo vaut mieux que mille mots : [cliquez ici](https://sandbox.saalal.com/alal-kyc-test) :) "
+---
+
+### Initiation de la vérification
+
+Le backend de votre application doit créer un utilisateur pour le lié plus tard aux données de carte [Create CardUser API Reference](/api-reference/cardusers/register-carduser).
+Seul le champ téléphone est obligatoire.
+
+```bash
+curl --location 'https://api.sandbox.saalal.com/v1/api/v1/card-users/create'
+--header 'Content-Type: application/json'
+--header 'Accept: application/json'
+--header 'Authorization: Bearer ....'
+--data-raw '{
+    "phone": "774964996",
+    "email": "testingboy@gmail.com"
+}'
+```
+
+```json
+{
+  "message": "Card User verification in progress",
+  "statusCode": 200,
+  "userCard": {
+    "reference": "88c2f29c-2fba-40f1-a303-b33008e42fe9",
+    "first_name": null,
+    "last_name": null,
+    "address": null,
+    "phone": "774964996",
+    "email": null,
+    "id_no": null
+  }
+}
+```
+
+### Vérification avec alal-kyc.js
+
+<CodeGroup>
+
+```js alal-kyc.js
+alalKyc.mount({
+  reference: "88c2f29c-2fba-40f1-a303-b33008e42fe9", // La réference de l'utilisateur obtenu dans la réquete précédente
+  color: "#1E4AFE", // La couleur de UI de ALAL kyc pour matcher votre code couleur
+  onNavigationUpdate: (payload) => {
+    console.log("onNavigation", payload);
+  },
+  onExit: (payload) => {
+    console.log("onExit", payload);
+  },
+  onError: (payload) => {
+    console.log("onError", payload);
+  },
+  onComplete: (payload) => {
+    console.log("onComplete", payload);
+  },
+});
+```
+
+```html index.html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>My Accounting Opening Flow</title>
+    <script
+      crossorigin
+      src="https://4004-41-214-3-213.ngrok-free.app/js/1.0.1/alal-kyc.js"
+    ></script>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+  </head>
+
+  <body>
+    <div id="kyc-host"></div>
+
+    <script>
+      <!-- Inititation de ALAL-KYC.js -->
+      alalKyc.mount({
+        reference: "a6a5fb17-dbee-413f-b37c-9489aeb35a32",
+        color: "#1E4AFE",
+        onNavigationUpdate: (payload) => {
+          console.log("onNavigation", payload);
+        },
+        onExit: (payload) => {
+          console.log("onExit", payload);
+        },
+        onError: (payload) => {
+          console.log("onError", payload);
+        },
+        onComplete: (payload) => {
+          console.log("onComplete", payload);
+        },
+      });
+    </script>
+  </body>
+</html>
+```
+
+</CodeGroup>
+
+### Et Voila !
+
+Une interface dédié s'affiche à l'utilisateur pour qu'il remplisse toutes les informations nécessaires.
+
+![Card UI](/images/kyc-demo.png)
+
+### Notification
+
+Après la vérification (complet en quelque millisecondes) vous recevez un webhook avec avec les données d'identité de lutilisateur
+extrait par notre outil d'IA.
+
+<CodeGroup>
+```json Vérifié avec Succés
+{
+  "event": "card_user_verification.successful",
+  "data": {
+    "reference": "a6a5fb17-dbee-413f-b37c-9489aeb35a32",
+    "first_name": "Testeur",
+    "last_name": "glock",
+    "address": "Pikine Texaco 11",
+    "id_no": "17521999133211635",
+    "phone": "774964996",
+    "email": "testingboy@gmail.com",
+    "status": "passed"
+  }
+}
+```
+
+```json Vérifié a échoué
+{
+  "event": "card_user_verification.failed",
+  "data": {
+    "reference": "a6a5fb17-dbee-413f-b37c-9489aeb35a32",
+    "first_name": null,
+    "last_name": null,
+    "address": null,
+    "phone": "774964996",
+    "email": null,
+    "id_no": null
+  }
+}
+```
+
+</CodeGroup>
