@@ -7,7 +7,7 @@ Il est nécessaire de vérifier que les événements proviennent bien de ALAL af
 Pour vérifier les événements, validez l'en-tête x-alal-signature envoyé avec l'événement. La signature HMAC SHA512 est la charge utile `payload` de l'événement signée avec votre clé secrète `ALAL_API_KEY`.
 
 <CodeGroup>
-```javascript
+```javascript Javascript
 const crypto = require('crypto');
 const webhookSecret = process.env.ALAL_API_KEY;
 // Using Express
@@ -22,7 +22,7 @@ app.post("/webhook_url", function(req, res) {
     res.send(200);
 });
 ```
-```python
+```python Python
 import hmac
 from hashlib import sha512
 
@@ -36,7 +36,7 @@ key=webhook_secret.encode("utf-8"), msg=request.body, digestmod=sha512
 return signature == computed_sig
 
 ````
-```php
+```php PHP
 $webhookSecret = env('ALAL_API_KEY');
 $data = json_encode($_POST);
 $hash = hash_hmac('sha512', $data, $webhookSecret);
