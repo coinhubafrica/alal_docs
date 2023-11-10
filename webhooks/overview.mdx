@@ -1,5 +1,51 @@
 Lorsque des événements se produisent sur nos systèmes, vous serez notifiés sur vos urls ipn.
 
+## Security
+
+Il est nécessaire de vérifier que les événements proviennent bien de ALAL afin d'éviter de créer des transactions dues à un événement frauduleux.
+
+Pour vérifier les événements, validez l'en-tête x-alal-signature envoyé avec l'événement. La signature HMAC SHA512 est la charge utile `payload` de l'événement signée avec votre clé secrète `ALAL_API_KEY`.
+
+<CodeGroup>
+```javascript
+const crypto = require('crypto');
+const webhookSecret = process.env.ALAL_API_KEY;
+// Using Express
+app.post("/webhook_url", function(req, res) {
+    //validate event
+    const hash = crypto.createHmac('sha512', webhookSecret).update(JSON.stringify(req.body)).digest('hex');
+    if (hash == req.headers['x-alal-signature']) {
+    // Retrieve the request's body
+    const event = req.body;
+    // Do something with event  
+    }
+    res.send(200);
+});
+```
+```python
+import hmac
+from hashlib import sha512
+
+def webhook_verification(request):
+secret = os.environ.get("ALAL_API_KEY")
+signature = request.headers.get('x-ala-signature')
+computed_sig = hmac.new(
+key=webhook_secret.encode("utf-8"), msg=request.body, digestmod=sha512
+).hexdigest()
+#Bitnob generated events will return True
+return signature == computed_sig
+
+````
+```php
+$webhookSecret = env('ALAL_API_KEY');
+$data = json_encode($_POST);
+$hash = hash_hmac('sha512', $data, $webhookSecret);
+if ($hash == $_SERVER['x-alal-signature']) {
+    // Do something with event
+}
+````
+
+</CodeGroup>
 ## Card Users Events
 
 ### CardUser Verification Successful
@@ -162,6 +208,7 @@ Lorsque des événements se produisent sur nos systèmes, vous serez notifiés s
   }
 }
 ```
+
 ### Card Sale Successful
 
 ```json
