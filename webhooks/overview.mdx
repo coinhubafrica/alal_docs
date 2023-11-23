@@ -28,7 +28,7 @@ from hashlib import sha512
 
 def webhook_verification(request):
 secret = os.environ.get("ALAL_API_KEY")
-signature = request.headers.get('x-ala-signature')
+signature = request.headers.get('x-alal-signature')
 computed_sig = hmac.new(
 key=webhook_secret.encode("utf-8"), msg=request.body, digestmod=sha512
 ).hexdigest()

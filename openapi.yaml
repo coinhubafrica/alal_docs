@@ -943,7 +943,12 @@ paths:
           application/json:
             schema:
               type: object
+              required:
+                - card_user_reference
               properties:
+                identifier:
+                  type: string
+                  example: 8840822604
                 reference:
                   type: string
                   example: c2abd1a2-917c-485f-b9ca-e4588aa3d2a7
@@ -951,7 +956,7 @@ paths:
                   type: string
                   example: 577f7a27-0749-4c7c-89a3-bcedca3452e9
               example:
-                reference: c2abd1a2-917c-485f-b9ca-e4588aa3d2a7
+                identifier: 8840822604
                 card_user_reference: 577f7a27-0749-4c7c-89a3-bcedca3452e9
       security:
         - bearerAuth: []
@@ -1018,6 +1023,9 @@ paths:
                       card:
                         type: object
                         properties:
+                          identifier:
+                            type: string
+                            example: 8840822604
                           reference:
                             type: string
                             example: c2abd1a2-917c-485f-b9ca-e4588aa3d2a7
@@ -1038,6 +1046,7 @@ paths:
                 statusCode: 200
                 data:
                   card:
+                    identifier: 8840822604
                     reference: d282e4a6-1fb6-4827-a6ae-a780263287d7
                     card_number: null
                     card_brand: Visa
