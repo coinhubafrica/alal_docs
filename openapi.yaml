@@ -95,7 +95,7 @@ paths:
                       type: object
                       xml:
                         name: 'item'
-                      properties: 
+                      properties:
                         reference:
                           type: string
                           example: 792c6cf2-f5cf-46c8-bf8c-699a9028010e
@@ -104,7 +104,7 @@ paths:
                           example: 1000
                         last_four:
                           type: string
-                          example: "1214"                          
+                          example: "1214"
                         status:
                           type: string
                           example: issued
@@ -131,7 +131,7 @@ paths:
                         example: 20
                       to:
                         type: integer
-                        example: 17                      
+                        example: 17
                       total:
                         type: integer
                         example: 17
@@ -147,7 +147,7 @@ paths:
           in: header
           schema:
             type: string
-          example: application/json        
+          example: application/json
       responses:
         '200':
           description: OK
@@ -200,7 +200,7 @@ paths:
                     type: integer
                     example: 200
                   data:
-                    properties: 
+                    properties:
                       reference:
                         type: string
                         example: 792c6cf2-f5cf-46c8-bf8c-699a9028010e
@@ -209,7 +209,7 @@ paths:
                         example: 1000
                       last_four:
                         type: string
-                        example: "1987"  
+                        example: "1987"
                       status:
                         type: string
                         example: issued
@@ -218,7 +218,7 @@ paths:
                         example: Visa
                       card_brand:
                         type: string
-                        example: physical             
+                        example: physical
               example:
                 message: OK
                 statusCode: 200
@@ -245,31 +245,31 @@ paths:
               properties:
                 first_name:
                   type: string
-                  example: ndeye ngone              
+                  example: ndeye ngone
                 last_name:
                   type: string
-                  example: ndiaye                
+                  example: ndiaye
                 address:
                   type: string
-                  example: rue ng 59 grand ngor                 
+                  example: rue ng 59 grand ngor
                 phone:
                   type: string
-                  example: '774964996'                  
+                  example: '774964996'
                 email:
                   type: string
-                  example: ndiayendeyengone99@gmail.com                
+                  example: ndiayendeyengone99@gmail.com
                 id_no:
                   type: string
-                  example: '20119991010000621'                  
+                  example: '20119991010000621'
                 selfie_image:
                   type: string
-                  example: https://example.com/selfie.png                  
+                  example: https://example.com/selfie.png
                 id_image:
                   type: string
-                  example: https://example.com/id.png                
+                  example: https://example.com/id.png
                 back_id_image:
                   type: string
-                  example: https://example.com/backid.png                
+                  example: https://example.com/backid.png
               example:
                 first_name: ndeye ngone
                 last_name: ndiaye
@@ -352,25 +352,25 @@ paths:
                     properties:
                       reference:
                         type: string
-                        example: 88c2f29c-2fba-40f1-a303-b33008e42fe9   
+                        example: 88c2f29c-2fba-40f1-a303-b33008e42fe9
                       first_name:
                         type: string
-                        example: ndeye ngone              
+                        example: ndeye ngone
                       last_name:
                         type: string
-                        example: ndiaye                
+                        example: ndiaye
                       address:
                         type: string
-                        example: rue ng 59 grand ngor                 
+                        example: rue ng 59 grand ngor
                       phone:
                         type: string
-                        example: '774964996'                  
+                        example: '774964996'
                       email:
                         type: string
-                        example: ndiayendeyengone99@gmail.com                
+                        example: ndiayendeyengone99@gmail.com
                       id_no:
                         type: string
-                        example: '20119991010000621'  
+                        example: '20119991010000621'
               example:
                 message: OK
                 statusCode: 200
@@ -536,7 +536,7 @@ paths:
                         example: 0
                       status:
                         type: string
-                        example: issuing                                                                                                                        
+                        example: issuing
               example:
                 message: Card currently being generated
                 statusCode: 200
@@ -550,171 +550,6 @@ paths:
                     expiry: null
                     balance: 0
                     status: issuing
-  /transactions:
-    get:
-      tags:
-        - Transactions
-      summary: List Transactions on Card
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json          
-        - name: card_reference
-          in: query
-          schema:
-            type: string
-          example: 6516484d-0059-4f53-b2cf-31f3ae884d3a
-        - name: page
-          in: query
-          schema:
-            type: integer
-          example: '1'
-        - name: per_page
-          in: query
-          schema:
-            type: integer
-          example: '20'        
-      responses:
-        '200':
-          description: OK
-          headers:
-            Host:
-              schema:
-                type: string
-                example: localhost:8090
-            Date:
-              schema:
-                type: string
-                example: Wed, 26 Jul 2023 18:49:30 GMT
-            Connection:
-              schema:
-                type: string
-                example: close
-            X-Powered-By:
-              schema:
-                type: string
-                example: PHP/8.2.4
-            Cache-Control:
-              schema:
-                type: string
-                example: no-cache, private
-            Content-Type:
-              schema:
-                type: string
-                example: application/json
-            X-RateLimit-Limit:
-              schema:
-                type: integer
-                example: '60'
-            X-RateLimit-Remaining:
-              schema:
-                type: integer
-                example: '59'
-            Access-Control-Allow-Origin:
-              schema:
-                type: string
-                example: '*'
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  message:
-                    type: string
-                    example: OK
-                  statusCode:
-                    type: integer
-                    example: 200
-                  data:
-                    type: array
-                    items:
-                      type: object
-                      xml:
-                        name: 'item'
-                      properties: 
-                        reference:
-                          type: string
-                          example: 792c6cf2-f5cf-46c8-bf8c-699a9028010e
-                        card_reference:
-                          type: string
-                          example: 9c54515e-7890-44f9-8cc2-a85b80322b98
-                        amount:
-                          type: integer
-                          example: 1000
-                        status:
-                          type: string
-                          example: success
-                        kind:
-                          type: string
-                          example: recharge
-                        merchant:
-                          type: string
-                          example: Any                          
-                        created_at:
-                          type: string
-                          example: '2023-06-22T11:07:07.000000Z'                     
-                  meta:
-                    type: object
-                    properties:
-                      current_page:
-                        type: integer
-                        example: 1
-                      from:
-                        type: integer
-                        example: 1
-                      last_page:
-                        type: integer
-                        example: 1
-                      per_page:
-                        type: integer
-                        example: 20
-                      to:
-                        type: integer
-                        example: 17                      
-                      total:
-                        type: integer
-                        example: 17                
-              example:
-                message: OK
-                statusCode: 200
-                data:
-                  transaction:
-                    - slug: e1d30877-0353-45b3-82fb-92780238ecb4
-                      card_reference: 9c54515e-7890-44f9-8cc2-a85b80322b98
-                      reference: b60f55b1-922a-406a-8417-g54atb0849ttb22c
-                      status: success
-                      kind: recharge
-                      merchant: false
-                      amount: 2000
-                      created_at: '2023-06-22T10:40:17.000000Z'
-                    - slug: 119d2a37-22e8-4122-9d18-267909aef996
-                      card_reference: 9c54515e-7890-44f9-8cc2-a85b80322b98
-                      reference: b60f55b1-922a-406a-8417-g5g4atb0849ttb22c
-                      status: success
-                      kind: recharge
-                      merchant: false
-                      amount: 2000
-                      created_at: '2023-06-22T11:07:07.000000Z'
-                    - slug: 1e4aa0d1-1979-47a0-83e6-ecb1c19f0a18
-                      card_reference: 9c54515e-7890-44f9-8cc2-a85b80322b98
-                      reference: b60f55b1-922a-406a-8417-g5hhg4atb0849ttb22c
-                      status: success
-                      kind: recharge
-                      merchant: false
-                      amount: 1000
-                      created_at: '2023-06-22T11:18:01.000000Z'
-                    - slug: 9e3c8b93-d024-4973-bd50-64310879502a
-                      card_reference: 9c54515e-7890-44f9-8cc2-a85b80322b98
-                      reference: b60f55b1-922a-406a-8417-g5hhg4a88jtb0849ttb22c
-                      status: success
-                      kind: withdraw
-                      merchant: false
-                      amount: 1000
-                      created_at: '2023-06-22T11:25:37.000000Z'
   /cards/freeze:
     post:
       tags:
@@ -728,7 +563,7 @@ paths:
               properties:
                 reference:
                   type: string
-                  example: 342e6d10-bbf1-41d4-ac69-06491f32e6e4  
+                  example: 342e6d10-bbf1-41d4-ac69-06491f32e6e4
               example:
                 reference: 342e6d10-bbf1-41d4-ac69-06491f32e6e4
       security:
@@ -810,7 +645,7 @@ paths:
                             example: 0
                           status:
                             type: string
-                            example: frozen         
+                            example: frozen
               example:
                 message: Card freezed
                 statusCode: 200
@@ -837,7 +672,7 @@ paths:
               properties:
                 reference:
                   type: string
-                  example: 342e6d10-bbf1-41d4-ac69-06491f32e6e4                
+                  example: 342e6d10-bbf1-41d4-ac69-06491f32e6e4
               example:
                 reference: 342e6d10-bbf1-41d4-ac69-06491f32e6e4
       security:
@@ -919,7 +754,7 @@ paths:
                             example: 0
                           status:
                             type: string
-                            example: issued                
+                            example: issued
               example:
                 message: Card currently being generated
                 statusCode: 200
@@ -1040,7 +875,7 @@ paths:
                             example: 0
                           status:
                             type: string
-                            example: issued                    
+                            example: issued
               example:
                 message: Card currently being generated
                 statusCode: 200
@@ -1055,6 +890,171 @@ paths:
                     expiry: null
                     balance: 0
                     status: issued
+  /transactions:
+    get:
+      tags:
+        - Transactions
+      summary: List Transactions on Card
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: card_reference
+          in: query
+          schema:
+            type: string
+          example: 6516484d-0059-4f53-b2cf-31f3ae884d3a
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: per_page
+          in: query
+          schema:
+            type: integer
+          example: '20'
+      responses:
+        '200':
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: localhost:8090
+            Date:
+              schema:
+                type: string
+                example: Wed, 26 Jul 2023 18:49:30 GMT
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.2.4
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '60'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '59'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: OK
+                  statusCode:
+                    type: integer
+                    example: 200
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      xml:
+                        name: 'item'
+                      properties:
+                        reference:
+                          type: string
+                          example: 792c6cf2-f5cf-46c8-bf8c-699a9028010e
+                        card_reference:
+                          type: string
+                          example: 9c54515e-7890-44f9-8cc2-a85b80322b98
+                        amount:
+                          type: integer
+                          example: 1000
+                        status:
+                          type: string
+                          example: success
+                        kind:
+                          type: string
+                          example: recharge
+                        merchant:
+                          type: string
+                          example: Any
+                        created_at:
+                          type: string
+                          example: '2023-06-22T11:07:07.000000Z'
+                  meta:
+                    type: object
+                    properties:
+                      current_page:
+                        type: integer
+                        example: 1
+                      from:
+                        type: integer
+                        example: 1
+                      last_page:
+                        type: integer
+                        example: 1
+                      per_page:
+                        type: integer
+                        example: 20
+                      to:
+                        type: integer
+                        example: 17
+                      total:
+                        type: integer
+                        example: 17
+              example:
+                message: OK
+                statusCode: 200
+                data:
+                  transaction:
+                    - slug: e1d30877-0353-45b3-82fb-92780238ecb4
+                      card_reference: 9c54515e-7890-44f9-8cc2-a85b80322b98
+                      reference: b60f55b1-922a-406a-8417-g54atb0849ttb22c
+                      status: success
+                      kind: recharge
+                      merchant: false
+                      amount: 2000
+                      created_at: '2023-06-22T10:40:17.000000Z'
+                    - slug: 119d2a37-22e8-4122-9d18-267909aef996
+                      card_reference: 9c54515e-7890-44f9-8cc2-a85b80322b98
+                      reference: b60f55b1-922a-406a-8417-g5g4atb0849ttb22c
+                      status: success
+                      kind: recharge
+                      merchant: false
+                      amount: 2000
+                      created_at: '2023-06-22T11:07:07.000000Z'
+                    - slug: 1e4aa0d1-1979-47a0-83e6-ecb1c19f0a18
+                      card_reference: 9c54515e-7890-44f9-8cc2-a85b80322b98
+                      reference: b60f55b1-922a-406a-8417-g5hhg4atb0849ttb22c
+                      status: success
+                      kind: recharge
+                      merchant: false
+                      amount: 1000
+                      created_at: '2023-06-22T11:18:01.000000Z'
+                    - slug: 9e3c8b93-d024-4973-bd50-64310879502a
+                      card_reference: 9c54515e-7890-44f9-8cc2-a85b80322b98
+                      reference: b60f55b1-922a-406a-8417-g5hhg4a88jtb0849ttb22c
+                      status: success
+                      kind: withdraw
+                      merchant: false
+                      amount: 1000
+                      created_at: '2023-06-22T11:25:37.000000Z'
   /transactions/{reference}:
     get:
       tags:
@@ -1120,7 +1120,7 @@ paths:
                     type: integer
                     example: 200
                   transaction:
-                    properties: 
+                    properties:
                       slug:
                         type: string
                         example: 792c6cf2-f5cf-46c8-bf8c-699a9028010e
@@ -1138,7 +1138,7 @@ paths:
                         example: recharge
                       merchant:
                         type: string
-                        example: Any 
+                        example: Any
                       amount:
                         type: integer
                         example: 2000
@@ -1236,7 +1236,7 @@ paths:
                     type: integer
                     example: 200
                   transaction:
-                    properties: 
+                    properties:
                       slug:
                         type: string
                         example: 792c6cf2-f5cf-46c8-bf8c-699a9028010e
@@ -1254,13 +1254,13 @@ paths:
                         example: recharge
                       merchant:
                         type: string
-                        example: Any 
+                        example: Any
                       amount:
                         type: integer
                         example: 2000
                       created_at:
                         type: string
-                        example: '2023-06-22T10:40:17.000000Z'                                                                                                                                                                
+                        example: '2023-06-22T10:40:17.000000Z'
               example:
                 message: OK
                 statusCode: 200
@@ -1273,6 +1273,401 @@ paths:
                     kind: recharge
                     merchant: false
                     amount: 2000
+                    created_at: '2023-06-22T10:40:17.000000Z'
+        '400':
+          description: Bad Request
+          headers:
+            Host:
+              schema:
+                type: string
+                example: localhost:8090
+            Date:
+              schema:
+                type: string
+                example: Thu, 22 Jun 2023 10:38:11 GMT
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.2.4
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '60'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '59'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: La valeur du champ reference est déjà utilisée.
+                  errors:
+                    type: object
+                    properties:
+                      id_no:
+                        type: string
+                        example: La valeur du champ reference est déjà utilisée.
+              example:
+                message: Bad Request
+                statusCode: 400
+                errors:
+                  reference:
+                    - La valeur du champ reference est déjà utilisée.
+  /transactions/card-to-bank:
+    post:
+      tags:
+        - Transactions
+      summary: Card to bank account transfer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                amount:
+                  type: integer
+                  example: 2000
+                card_reference:
+                  type: string
+                  example: 6516484d-0059-4f53-b2cf-31f3ae884d3a
+                bank_id:
+                  type: string
+                  example: XX08XX0100163110648500003035
+                bank_name:
+                  enum: [BICICI, NSIA_BANQUE_CI, SIB, SOCIETE_GENERALE_CI, CITIBANK_CI, BOA_CI, BACI, ECOBANK_CI, BHCI, BNI, STANDARD_CHARTERED_BANK_CI, AFRILAND_FIRST_BANK_CI, VERSUS_BANK_CI, ORABANK_CI, BBG_CI, UBA_CI, BSIC_CI, BGFIBANK_CI, BANQUE_POPULAIRE, GTBANK_CI, CBI_CI, BDU_CI, STANBIC_BANK_CI, BDA, MANSA_BANK_CI, ORANGE_BANK_CI, AFG_BANK_CI]
+                  example: YOUR_BANK_NAME
+                account_name:
+                  type: string
+                  example: YOU_BANK_ACCOUNT_NAME
+              example:
+                amount: 2000
+                card_reference: 6516484d-0059-4f53-b2cf-31f3ae884d3a
+                reference: b60f54d5b1-922a-40ty6a-8417-fasjhdfdfdi231i
+                bank_id: XX08XX0100163110648500003035
+                bank_name: YOUR_BANK_NAME
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: localhost:8090
+            Date:
+              schema:
+                type: string
+                example: Thu, 22 Jun 2023 10:40:18 GMT
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.2.4
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '60'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '59'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: OK
+                  statusCode:
+                    type: integer
+                    example: 200
+                  transaction:
+                    properties:
+                      slug:
+                        type: string
+                        example: 792c6cf2-f5cf-46c8-bf8c-699a9028010e
+                      card_reference:
+                        type: string
+                        example: 9c54515e-7890-44f9-8cc2-a85b80322b98
+                      reference:
+                        type: string
+                        example: b60f55b1-922a-406a-8417-g54atb0849ttb22c
+                      status:
+                        type: string
+                        example: pending
+                      kind:
+                        type: string
+                        example: card_to_bank
+                      merchant:
+                        type: string
+                        example: Any
+                      amount:
+                        type: integer
+                        example: 2000
+                      bank_name:
+                        type: string
+                        example: 'YOUR_BANK_NAME'
+                      bank_id:
+                        type: string
+                        example: 'XX08XX0100163110648500003035'
+                      bank_account_name:
+                        type: string
+                        example: 'YOUR_BANK_ACCOUNT_NAME'
+                      created_at:
+                        type: string
+                        example: '2023-06-22T10:40:17.000000Z'
+              example:
+                message: OK
+                statusCode: 200
+                data:
+                  transaction:
+                    slug: e1d30877-0353-45b3-82fb-92780238ecb4
+                    card_reference: 9c54515e-7890-44f9-8cc2-a85b80322b98
+                    reference: b60f55b1-922a-406a-8417-g54atb0849ttb22c
+                    status: pending
+                    kind: card_to_bank
+                    merchant: 'ALAL'
+                    amount: 2000
+                    bank_name: 'YOUR_BANK_NAME'
+                    bank_id: 'XX08XX0100163110648500003035'
+                    bank_account_name: 'YOUR_BANK_ACCOUNT_NAME'
+                    created_at: '2023-06-22T10:40:17.000000Z'
+        '400':
+          description: Bad Request
+          headers:
+            Host:
+              schema:
+                type: string
+                example: localhost:8090
+            Date:
+              schema:
+                type: string
+                example: Thu, 22 Jun 2023 10:38:11 GMT
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.2.4
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '60'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '59'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: La valeur du champ reference est déjà utilisée.
+                  errors:
+                    type: object
+                    properties:
+                      id_no:
+                        type: string
+                        example: La valeur du champ reference est déjà utilisée.
+              example:
+                message: Bad Request
+                statusCode: 400
+                errors:
+                  reference:
+                    - La valeur du champ reference est déjà utilisée.
+  /transactions/card-to-wallet:
+    post:
+      tags:
+        - Transactions
+      summary: Card to wallet transfer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                amount:
+                  type: integer
+                  example: 2000
+                card_reference:
+                  type: string
+                  example: 6516484d-0059-4f53-b2cf-31f3ae884d3a
+                phone:
+                  type: string
+                  example: XXXXXXXXX
+                network:
+                  enum: [expresso_senegal, free_money_senegal, mtn_benin, mtn_ci, orange_money_ci, orange_money_senegal, t_money_togo]
+                  example: XXXXXXX
+              example:
+                amount: 2000
+                card_reference: 6516484d-0059-4f53-b2cf-31f3ae884d3a
+                reference: b60f54d5b1-922a-40ty6a-8417-fasjhdfdfdi231i
+                phone: XXXXXXXXX
+                network: XXXXXXX
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: localhost:8090
+            Date:
+              schema:
+                type: string
+                example: Thu, 22 Jun 2023 10:40:18 GMT
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.2.4
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '60'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '59'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: OK
+                  statusCode:
+                    type: integer
+                    example: 200
+                  transaction:
+                    properties:
+                      slug:
+                        type: string
+                        example: 792c6cf2-f5cf-46c8-bf8c-699a9028010e
+                      card_reference:
+                        type: string
+                        example: 9c54515e-7890-44f9-8cc2-a85b80322b98
+                      reference:
+                        type: string
+                        example: b60f55b1-922a-406a-8417-g54atb0849ttb22c
+                      status:
+                        type: string
+                        example: pending
+                      kind:
+                        type: string
+                        example: card_to_wallet
+                      merchant:
+                        type: string
+                        example: Any
+                      amount:
+                        type: integer
+                        example: 2000
+                      phone:
+                        type: string
+                        example: XXXXXXXX
+                      network:
+                        type: string
+                        example: XXXXXXXX
+                      created_at:
+                        type: string
+                        example: '2023-06-22T10:40:17.000000Z'
+              example:
+                message: OK
+                statusCode: 200
+                data:
+                  transaction:
+                    slug: e1d30877-0353-45b3-82fb-92780238ecb4
+                    card_reference: 9c54515e-7890-44f9-8cc2-a85b80322b98
+                    reference: b60f55b1-922a-406a-8417-g54atb0849ttb22c
+                    status: pending
+                    kind: card_to_wallet
+                    merchant: false
+                    amount: 2000
+                    phone: XXXXXXXX
+                    network: XXXXXXXX
                     created_at: '2023-06-22T10:40:17.000000Z'
         '400':
           description: Bad Request
@@ -1413,34 +1808,34 @@ paths:
                       type: object
                       xml:
                         name: 'item'
-                      properties: 
+                      properties:
                         reference:
                           type: string
                           example: 792c6cf2-f5cf-46c8-bf8c-699a9028010e
                         first_name:
                           type: string
-                          example: ndeye ngone              
+                          example: ndeye ngone
                         last_name:
                           type: string
-                          example: ndiaye                
+                          example: ndiaye
                         address:
                           type: string
-                          example: rue ng 59 grand ngor                 
+                          example: rue ng 59 grand ngor
                         phone:
                           type: string
-                          example: '774964996'                  
+                          example: '774964996'
                         email:
                           type: string
-                          example: ndiayendeyengone99@gmail.com                
+                          example: ndiayendeyengone99@gmail.com
                         id_no:
                           type: string
-                          example: '20119991010000621'      
+                          example: '20119991010000621'
                         status:
                           type: string
-                          example: 'verified'                                     
+                          example: 'verified'
                         created_at:
                           type: string
-                          example: '2023-06-22T11:07:07.000000Z'                     
+                          example: '2023-06-22T11:07:07.000000Z'
                   meta:
                     type: object
                     properties:
@@ -1458,10 +1853,10 @@ paths:
                         example: 20
                       to:
                         type: integer
-                        example: 17                      
+                        example: 17
                       total:
                         type: integer
-                        example: 17                   
+                        example: 17
               example:
                 message: OK
                 statusCode: 200
@@ -1720,34 +2115,34 @@ paths:
             application/json:
               schema:
                 type: object
-                properties: 
+                properties:
                   reference:
                     type: string
                     example: 792c6cf2-f5cf-46c8-bf8c-699a9028010e
                   first_name:
                     type: string
-                    example: ndeye ngone              
+                    example: ndeye ngone
                   last_name:
                     type: string
-                    example: ndiaye                
+                    example: ndiaye
                   address:
                     type: string
-                    example: rue ng 59 grand ngor                 
+                    example: rue ng 59 grand ngor
                   phone:
                     type: string
-                    example: '774964996'                  
+                    example: '774964996'
                   email:
                     type: string
-                    example: ndiayendeyengone99@gmail.com                
+                    example: ndiayendeyengone99@gmail.com
                   id_no:
                     type: string
-                    example: '20119991010000621'      
+                    example: '20119991010000621'
                   status:
                     type: string
-                    example: 'verified'                                     
+                    example: 'verified'
                   created_at:
                     type: string
-                    example: '2023-06-22T11:07:07.000000Z'                  
+                    example: '2023-06-22T11:07:07.000000Z'
               example:
                 message: OK
                 statusCode: 200
@@ -1774,31 +2169,31 @@ paths:
               properties:
                 first_name:
                   type: string
-                  example: ndeye ngone              
+                  example: ndeye ngone
                 last_name:
                   type: string
-                  example: ndiaye                
+                  example: ndiaye
                 address:
                   type: string
-                  example: rue ng 59 grand ngor                 
+                  example: rue ng 59 grand ngor
                 phone:
                   type: string
-                  example: '774964996'                  
+                  example: '774964996'
                 email:
                   type: string
-                  example: ndiayendeyengone99@gmail.com                
+                  example: ndiayendeyengone99@gmail.com
                 id_no:
                   type: string
-                  example: '20119991010000621'                  
+                  example: '20119991010000621'
                 selfie_image:
                   type: string
-                  example: https://example.com/selfie.png                  
+                  example: https://example.com/selfie.png
                 id_image:
                   type: string
-                  example: https://example.com/id.png                
+                  example: https://example.com/id.png
                 back_id_image:
                   type: string
-                  example: https://example.com/backid.png                
+                  example: https://example.com/backid.png
               example:
                 first_name: ndeye ngone
                 last_name: ndiaye
@@ -1881,25 +2276,25 @@ paths:
                     properties:
                       reference:
                         type: string
-                        example: 88c2f29c-2fba-40f1-a303-b33008e42fe9   
+                        example: 88c2f29c-2fba-40f1-a303-b33008e42fe9
                       first_name:
                         type: string
-                        example: ndeye ngone              
+                        example: ndeye ngone
                       last_name:
                         type: string
-                        example: ndiaye                
+                        example: ndiaye
                       address:
                         type: string
-                        example: rue ng 59 grand ngor                 
+                        example: rue ng 59 grand ngor
                       phone:
                         type: string
-                        example: '774964996'                  
+                        example: '774964996'
                       email:
                         type: string
-                        example: ndiayendeyengone99@gmail.com                
+                        example: ndiayendeyengone99@gmail.com
                       id_no:
                         type: string
-                        example: '20119991010000621'  
+                        example: '20119991010000621'
               example:
                 message: OK
                 statusCode: 200
@@ -1987,7 +2382,7 @@ paths:
                   example: ed7e61b6-94c9-4716-adc9-74a19db8a8e
                 css_url:
                   type: string
-                  example: https://example.com/alal.css               
+                  example: https://example.com/alal.css
               example:
                 reference: ed7e61b6-94c9-4716-adc9-74a19db8a8e
       security:
@@ -2068,10 +2463,10 @@ paths:
                     properties:
                       access_token:
                         type: string
-                        example: N72VeyZQ8dmn3a0Wk0blu2a1pjFjdcNOx2Ec5bm39pFGa33gGu              
+                        example: N72VeyZQ8dmn3a0Wk0blu2a1pjFjdcNOx2Ec5bm39pFGa33gGu
                       embedded_ui:
                         type: string
-                        example: https://sandbox.saalal.com/embedded-card-reveal/test_Q347N1z2kHuUTlrUPoYR1rSsmkl1FbiY5GhN8TAwBtqdvqo1QB              
+                        example: https://sandbox.saalal.com/embedded-card-reveal/test_Q347N1z2kHuUTlrUPoYR1rSsmkl1FbiY5GhN8TAwBtqdvqo1QB
               example:
                 message: Access Token generated successfully
                 statusCode: 200
@@ -2177,13 +2572,13 @@ paths:
                       type: object
                       xml:
                         name: 'item'
-                      properties: 
+                      properties:
                         reference:
                           type: string
                           example: 962b954d-bbd3-4b03-8a70-80fb595e9049
                         transaction_reference:
                           type: string
-                          example: 962b954d-bbd3-4b03-8a70                        
+                          example: 962b954d-bbd3-4b03-8a70
                         status:
                           type: string
                           example: submitted
@@ -2192,7 +2587,7 @@ paths:
                           enum: [duplicate, not_received, fraudulent, product_not_as_described, service_not_as_described, canceled, other]
                         explanation:
                           type: string
-                          example: No real explanation even now                      
+                          example: No real explanation even now
                   meta:
                     type: object
                     properties:
@@ -2210,10 +2605,10 @@ paths:
                         example: 20
                       to:
                         type: integer
-                        example: 17                      
+                        example: 17
                       total:
                         type: integer
-                        example: 17             
+                        example: 17
               example:
                 message: OK
                 statusCode: 200
@@ -2322,7 +2717,7 @@ paths:
                         example: 962b954d-bbd3-4b03-8a70-80fb595e9049
                       transaction_reference:
                         type: string
-                        example: 962b954d-bbd3-4b03-8a70                        
+                        example: 962b954d-bbd3-4b03-8a70
                       status:
                         type: string
                         example: submitted
@@ -2331,7 +2726,7 @@ paths:
                         enum: [duplicate, not_received, fraudulent, product_not_as_described, service_not_as_described, canceled, other]
                       explanation:
                         type: string
-                        example: No real explanation even now     
+                        example: No real explanation even now
               example:
                 message: OK
                 statusCode: 200
@@ -2361,7 +2756,7 @@ paths:
                   enum: [duplicate, not_received, fraudulent, product_not_as_described, service_not_as_described, canceled, other]
                 explanation:
                   type: string
-                  example: No real explanation                        
+                  example: No real explanation
               example:
                 transaction_slug: 76884322-a3fb-4607-b39c-6a6d7d9c3bcc
                 reason: duplicate
@@ -2453,7 +2848,7 @@ paths:
                         example: 962b954d-bbd3-4b03-8a70-80fb595e9049
                       transaction_reference:
                         type: string
-                        example: 962b954d-bbd3-4b03-8a70                        
+                        example: 962b954d-bbd3-4b03-8a70
                       status:
                         type: string
                         example: submitted
@@ -2462,7 +2857,7 @@ paths:
                         enum: [duplicate, not_received, fraudulent, product_not_as_described, service_not_as_described, canceled, other]
                       explanation:
                         type: string
-                        example: No real explanation even now                     
+                        example: No real explanation even now
               example:
                 message: dispute successfully created!
                 statusCode: 200
@@ -2491,7 +2886,7 @@ paths:
                   example: No real explanation even now
                 reason:
                   type: string
-                  enum: [duplicate, not_received, fraudulent, product_not_as_described, service_not_as_described, canceled, other]                               
+                  enum: [duplicate, not_received, fraudulent, product_not_as_described, service_not_as_described, canceled, other]
               example:
                 transaction_slug: 962b954d-bbd3-4b03-8a70-80fb595e9049
                 explanation: No real explanation even now
@@ -2569,8 +2964,8 @@ paths:
                 type: object
                 properties:
                   message:
-                      type: string
-                      example: dispute successfully updated!
+                    type: string
+                    example: dispute successfully updated!
                   statusCode:
                     type: integer
                     example: 200
@@ -2582,7 +2977,7 @@ paths:
                         example: 962b954d-bbd3-4b03-8a70-80fb595e9049
                       transaction_reference:
                         type: string
-                        example: 962b954d-bbd3-4b03-8a70                        
+                        example: 962b954d-bbd3-4b03-8a70
                       status:
                         type: string
                         example: submitted
@@ -2591,7 +2986,7 @@ paths:
                         enum: [duplicate, not_received, fraudulent, product_not_as_described, service_not_as_described, canceled, other]
                       explanation:
                         type: string
-                        example: No real explanation even now                       
+                        example: No real explanation even now
               example:
                 message: dispute successfully updated!
                 statusCode: 200
