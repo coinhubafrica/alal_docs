@@ -97,7 +97,8 @@
       "pages": [
         "api-reference/cardusers/list-carduser",
         "api-reference/cardusers/show-carduser",
-        "api-reference/cardusers/register-carduser"
+        "api-reference/cardusers/register-carduser",
+        "api-reference/cardusers/resubmit-carduser"
       ]
     },
     {
