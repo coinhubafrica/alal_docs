@@ -1552,7 +1552,7 @@ paths:
                   type: string
                   example: XXXXXXXXX
                 network:
-                  enum: [expresso_senegal, free_money_senegal, mtn_benin, mtn_ci, orange_money_ci, orange_money_senegal, t_money_togo]
+                  enum: [mtn_ci, orange_money_ci, wave_ci, orange_money_senegal, wave_sn]
                   example: XXXXXXX
               example:
                 amount: 2000
@@ -1725,6 +1725,200 @@ paths:
                 errors:
                   reference:
                     - La valeur du champ reference est déjà utilisée.
+  /transactions/wallet-to-card:
+    post:
+      tags:
+        - Transactions
+      summary: Wallet to card transfer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                amount:
+                  type: integer
+                  example: 2000
+                card_reference:
+                  type: string
+                  example: 6516484d-0059-4f53-b2cf-31f3ae884d3a
+                phone:
+                  type: string
+                  example: XXXXXXXXX
+                network:
+                  enum: [mtn_ci, orange_money_ci, wave_ci, orange_money_senegal, wave_sn]
+                  example: XXXXXXX
+              example:
+                amount: 2000
+                card_reference: 6516484d-0059-4f53-b2cf-31f3ae884d3a
+                reference: b60f54d5b1-922a-40ty6a-8417-fasjhdfdfdi231i
+                phone: XXXXXXXXX
+                network: XXXXXXX
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: localhost:8090
+            Date:
+              schema:
+                type: string
+                example: Thu, 22 Jun 2023 10:40:18 GMT
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.2.4
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '60'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '59'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: OK
+                  statusCode:
+                    type: integer
+                    example: 200
+                  transaction:
+                    properties:
+                      slug:
+                        type: string
+                        example: 792c6cf2-f5cf-46c8-bf8c-699a9028010e
+                      card_reference:
+                        type: string
+                        example: 9c54515e-7890-44f9-8cc2-a85b80322b98
+                      reference:
+                        type: string
+                        example: b60f55b1-922a-406a-8417-g54atb0849ttb22c
+                      status:
+                        type: string
+                        example: pending
+                      kind:
+                        type: string
+                        example: card_to_wallet
+                      merchant:
+                        type: string
+                        example: Any
+                      amount:
+                        type: integer
+                        example: 2000
+                      phone:
+                        type: string
+                        example: XXXXXXXX
+                      network:
+                        type: string
+                        example: XXXXXXXX
+                      created_at:
+                        type: string
+                        example: '2023-06-22T10:40:17.000000Z'
+              example:
+                message: OK
+                statusCode: 200
+                data:
+                  transaction:
+                    slug: e1d30877-0353-45b3-82fb-92780238ecb4
+                    card_reference: 9c54515e-7890-44f9-8cc2-a85b80322b98
+                    reference: b60f55b1-922a-406a-8417-g54atb0849ttb22c
+                    status: pending
+                    kind: card_to_wallet
+                    merchant: false
+                    amount: 2000
+                    phone: XXXXXXXX
+                    network: XXXXXXXX
+                    created_at: '2023-06-22T10:40:17.000000Z'
+        '400':
+          description: Bad Request
+          headers:
+            Host:
+              schema:
+                type: string
+                example: localhost:8090
+            Date:
+              schema:
+                type: string
+                example: Thu, 22 Jun 2023 10:38:11 GMT
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.2.4
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '60'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '59'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: La valeur du champ reference est déjà utilisée.
+                  errors:
+                    type: object
+                    properties:
+                      id_no:
+                        type: string
+                        example: La valeur du champ reference est déjà utilisée.
+              example:
+                message: Bad Request
+                statusCode: 400
+                errors:
+                  reference:
+                    - La valeur du champ reference est déjà utilisée.                    
   /card-users:
     get:
       tags:

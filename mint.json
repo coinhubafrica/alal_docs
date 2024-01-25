@@ -88,8 +88,9 @@
         "api-reference/transactions/list-transactions-on-card",
         "api-reference/transactions/show-transaction",
         "api-reference/transactions/topup-or-withdraw-card",
-        "api-reference/transactions/card-to-bank-transfer",
-        "api-reference/transactions/card-to-wallet-transfer"
+        "api-reference/transactions/card-to-bank",
+        "api-reference/transactions/card-to-wallet",
+        "api-reference/transactions/wallet-to-card"
       ]
     },
     {
