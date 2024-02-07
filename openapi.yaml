@@ -135,6 +135,204 @@ paths:
                       total:
                         type: integer
                         example: 17
+  /business/balances:
+    get:
+      tags:
+        - Business
+      summary: Get balances
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: localhost:8090
+            Date:
+              schema:
+                type: string
+                example: Wed, 26 Jul 2023 18:49:30 GMT
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.2.4
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '60'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '59'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: OK
+                  statusCode:
+                    type: integer
+                    example: 200
+                  data:
+                    properties:
+                      operational:
+                        type: integer
+                        example: 1000
+                      commission:
+                        type: integer
+                        example: 1000
+  /business/operations:
+    get:
+      tags:
+        - Business
+      summary: Get operations
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: per_page
+          in: query
+          schema:
+            type: integer
+          example: '20'
+      responses:
+        '200':
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: localhost:8090
+            Date:
+              schema:
+                type: string
+                example: Wed, 26 Jul 2023 18:49:30 GMT
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.2.4
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '60'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '59'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: OK
+                  statusCode:
+                    type: integer
+                    example: 200
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      xml:
+                        name: 'item'
+                      properties:
+                        amount:
+                          type: integer
+                          example: 2000
+                        fees:
+                          type: integer
+                          example: 0
+                        description:
+                          type: string
+                          example: 'YOUR_BANK_NAME'
+                        type:
+                          type: string
+                          example: account_transfer
+                        kind:
+                          type: string
+                          example: float_debit
+                        bank_name:
+                          type: string
+                          example: 'YOUR_BANK_NAME'
+                        bank_id:
+                          type: string
+                          example: 'XX08XX0100163110648500003035'
+                        bank_account_name:
+                          type: string
+                          example: 'YOUR_BANK_ACCOUNT_NAME'
+                        status:
+                          type: string
+                          example: pending
+                        created_at:
+                          type: string
+                          example: '2023-06-22T10:40:17.000000Z'
+                  meta:
+                    type: object
+                    properties:
+                      current_page:
+                        type: integer
+                        example: 1
+                      from:
+                        type: integer
+                        example: 1
+                      last_page:
+                        type: integer
+                        example: 1
+                      per_page:
+                        type: integer
+                        example: 20
+                      to:
+                        type: integer
+                        example: 17
+                      total:
+                        type: integer
+                        example: 17
   /cards/{reference}:
     get:
       tags:
@@ -1334,7 +1532,7 @@ paths:
     post:
       tags:
         - Transactions
-      summary: Card to bank account transfer
+      summary: Card to Bank Account
       requestBody:
         content:
           application/json:
@@ -1472,6 +1670,200 @@ paths:
                     bank_id: 'XX08XX0100163110648500003035'
                     bank_account_name: 'YOUR_BANK_ACCOUNT_NAME'
                     created_at: '2023-06-22T10:40:17.000000Z'
+        '400':
+          description: Bad Request
+          headers:
+            Host:
+              schema:
+                type: string
+                example: localhost:8090
+            Date:
+              schema:
+                type: string
+                example: Thu, 22 Jun 2023 10:38:11 GMT
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.2.4
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '60'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '59'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: La valeur du champ reference est déjà utilisée.
+                  errors:
+                    type: object
+                    properties:
+                      id_no:
+                        type: string
+                        example: La valeur du champ reference est déjà utilisée.
+              example:
+                message: Bad Request
+                statusCode: 400
+                errors:
+                  reference:
+                    - La valeur du champ reference est déjà utilisée.
+  /transactions/business-to-bank:
+    post:
+      tags:
+        - Transactions
+      summary: Business to Bank Account
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                amount:
+                  type: integer
+                  example: 2000
+                bank_id:
+                  type: string
+                  example: XX08XX0100163110648500003035
+                bank_name:
+                  enum: [BICICI, NSIA_BANQUE_CI, SIB, SOCIETE_GENERALE_CI, CITIBANK_CI, BOA_CI, BACI, ECOBANK_CI, BHCI, BNI, STANDARD_CHARTERED_BANK_CI, AFRILAND_FIRST_BANK_CI, VERSUS_BANK_CI, ORABANK_CI, BBG_CI, UBA_CI, BSIC_CI, BGFIBANK_CI, BANQUE_POPULAIRE, GTBANK_CI, CBI_CI, BDU_CI, STANBIC_BANK_CI, BDA, MANSA_BANK_CI, ORANGE_BANK_CI, AFG_BANK_CI]
+                  example: YOUR_BANK_NAME
+                account_name:
+                  type: string
+                  example: YOU_BANK_ACCOUNT_NAME
+              example:
+                amount: 2000
+                reference: b60f54d5b1-922a-40ty6a-8417-fasjhdfdfdi231i
+                bank_id: XX08XX0100163110648500003035
+                bank_name: YOUR_BANK_NAME
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: localhost:8090
+            Date:
+              schema:
+                type: string
+                example: Thu, 22 Jun 2023 10:40:18 GMT
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.2.4
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '60'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '59'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: OK
+                  statusCode:
+                    type: integer
+                    example: 200
+                  operation:
+                    properties:
+                      amount:
+                        type: integer
+                        example: 2000
+                      fees:
+                        type: integer
+                        example: 0
+                      description:
+                        type: string
+                        example: 'YOUR_BANK_NAME'
+                      type:
+                        type: string
+                        example: account_transfer
+                      kind:
+                        type: string
+                        example: float_debit
+                      bank_name:
+                        type: string
+                        example: 'YOUR_BANK_NAME'
+                      bank_id:
+                        type: string
+                        example: 'XX08XX0100163110648500003035'
+                      bank_account_name:
+                        type: string
+                        example: 'YOUR_BANK_ACCOUNT_NAME'
+                      status:
+                        type: string
+                        example: pending
+                      created_at:
+                        type: string
+                        example: '2023-06-22T10:40:17.000000Z'
+              example:
+                message: OK
+                statusCode: 200
+                data:
+                  operation:
+                    transaction: null
+                    amount: 15000
+                    fees: 225
+                    description: your_transfer_description
+                    type: account_transfer
+                    kind: float_debit
+                    bank_name: your_bank_name
+                    bank_rib: SN526718771DASDA12112132
+                    bank_account_name: Acme inc
+                    status: failed
+                    created_at: 2024-02-07T13:37:16.000000Z
         '400':
           description: Bad Request
           headers:

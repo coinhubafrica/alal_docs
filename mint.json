@@ -71,6 +71,13 @@
       "pages": ["api-reference/authentication"]
     },
     {
+      "group": "Business",
+      "pages": [
+        "api-reference/business/balances",
+        "api-reference/business/operations"
+      ]
+    },
+    {
       "group": "Cards",
       "pages": [
         "api-reference/cards/list-card",
@@ -89,6 +96,7 @@
         "api-reference/transactions/show-transaction",
         "api-reference/transactions/topup-or-withdraw-card",
         "api-reference/transactions/card-to-bank",
+        "api-reference/transactions/business-to-bank",
         "api-reference/transactions/card-to-wallet",
         "api-reference/transactions/wallet-to-card"
       ]
