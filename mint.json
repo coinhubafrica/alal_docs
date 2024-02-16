@@ -73,8 +73,29 @@
     {
       "group": "Business",
       "pages": [
-        "api-reference/business/balances",
-        "api-reference/business/operations"
+        {
+          "group": "Account",
+          "pages": [
+            "api-reference/business/balances",
+            "api-reference/business/operations"
+          ]
+        },
+        {
+          "group": "Disburse",
+          "pages": [
+            "api-reference/business/disburse/create",
+            "api-reference/business/disburse/list",
+            "api-reference/business/disburse/show"
+          ]
+        },
+        {
+          "group": "Payment",
+          "pages": [
+            "api-reference/business/payment/create",
+            "api-reference/business/payment/list",
+            "api-reference/business/payment/show"
+          ]
+        }
       ]
     },
     {
@@ -96,7 +117,6 @@
         "api-reference/transactions/show-transaction",
         "api-reference/transactions/topup-or-withdraw-card",
         "api-reference/transactions/card-to-bank",
-        "api-reference/transactions/business-to-bank",
         "api-reference/transactions/card-to-wallet",
         "api-reference/transactions/wallet-to-card"
       ]
