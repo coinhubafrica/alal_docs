@@ -2333,7 +2333,7 @@ paths:
                 errors:
                   reference:
                     - La valeur du champ reference est déjà utilisée.
-  /transactions/card-to-bank:
+  /transactions/create/card-to-bank:
     post:
       tags:
         - Transactions
@@ -2534,7 +2534,7 @@ paths:
                 errors:
                   reference:
                     - La valeur du champ reference est déjà utilisée.
-  /transactions/card-to-wallet:
+  /transactions/create/card-to-wallet:
     post:
       tags:
         - Transactions
@@ -2728,7 +2728,7 @@ paths:
                 errors:
                   reference:
                     - La valeur du champ reference est déjà utilisée.
-  /transactions/wallet-to-card:
+  /transactions/create/wallet-to-card:
     post:
       tags:
         - Transactions
