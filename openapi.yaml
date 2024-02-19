@@ -229,7 +229,7 @@ paths:
                   example: '500'
                 network:
                   type: string
-                  enum: ['orange-money-senegal', 'wave-senegal', 'bank']
+                  enum: ['orange-money-sn', 'wave-sn', 'bank']
                 customer:
                   type: object
                   properties:
@@ -253,7 +253,7 @@ paths:
                       example: YOU_BANK_ACCOUNT_NAME
               example:
                 amount: 500
-                network: orange-money-senegal
+                network: orange-money-sn
                 customer:
                   full_name: Johny Doe
                   email: john@doe.com
@@ -365,7 +365,7 @@ paths:
                     slug: d282e4a6-1fb6-4827-a6ae-a780263287d7
                     reference: d282e4a6-1fb6-4827-a6ae-a780263287d7
                     kind: disburse
-                    network: bank | orange-money-senegal | wave-senegal
+                    network: bank | orange-money-sn | wave-sn
                     amount: 500
                     status: processing
                     expired_at: 2024-01-11
@@ -487,7 +487,7 @@ paths:
                           example: disburse
                         network:
                           type: string
-                          example: wave-senegal
+                          example: wave-sn
                         amount:
                           type: integer
                           example: 1500
@@ -621,7 +621,7 @@ paths:
                         example: disburse
                       network:
                         type: string
-                        example: wave-senegal
+                        example: wave-sn
                       amount:
                         type: integer
                         example: 1500
@@ -648,7 +648,7 @@ paths:
                   type: integer
                 network:
                   type: string
-                  enum: ['orange-money-senegal', 'wave-senegal']
+                  enum: ['orange-money-sn', 'wave-sn']
                 customer:
                   type: object
                   properties:
@@ -660,7 +660,7 @@ paths:
                       type: string
               example:
                 amount: 500
-                network: orange-money-senegal
+                network: orange-money-sn
                 customer:
                   full_name: Johny Doe
                   email: john@doe.com
@@ -759,7 +759,7 @@ paths:
                     slug: d282e4a6-1fb6-4827-a6ae-a780263287d7
                     reference: d282e4a6-1fb6-4827-a6ae-a780263287d7
                     kind: disburse
-                    network: bank | orange-money-senegal | wave-senegal
+                    network: bank | orange-money-sn | wave-sn
                     amount: 500
                     status: pending
                     expired_at: 2024-01-11
@@ -872,7 +872,7 @@ paths:
                           example: payment
                         network:
                           type: string
-                          example: wave-senegal
+                          example: wave-sn
                         amount:
                           type: integer
                           example: 1500
@@ -1006,7 +1006,7 @@ paths:
                         example: payment
                       network:
                         type: string
-                        example: wave-senegal
+                        example: wave-sn
                       amount:
                         type: integer
                         example: 1500
@@ -2555,7 +2555,7 @@ paths:
                   type: string
                   example: XXXXXXXXX
                 network:
-                  enum: [mtn-ci, orange-money-ci, wave-ci, orange-money-senegal, wave-sn]
+                  enum: [mtn-ci, orange-money-ci, wave-ci, orange-money-sn, wave-sn]
                   example: XXXXXXX
               example:
                 amount: 2000
@@ -2749,7 +2749,7 @@ paths:
                   type: string
                   example: XXXXXXXXX
                 network:
-                  enum: [mtn-ci, orange-money-ci, wave-ci, orange-money-senegal, wave-sn]
+                  enum: [mtn-ci, orange-money-ci, wave-ci, orange-money-sn, wave-sn]
                   example: XXXXXXX
               example:
                 amount: 2000
