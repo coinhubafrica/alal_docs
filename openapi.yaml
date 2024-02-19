@@ -2555,7 +2555,7 @@ paths:
                   type: string
                   example: XXXXXXXXX
                 network:
-                  enum: [mtn_ci, orange_money_ci, wave_ci, orange_money_senegal, wave_sn]
+                  enum: [mtn-ci, orange-money-ci, wave-ci, orange-money-senegal, wave-sn]
                   example: XXXXXXX
               example:
                 amount: 2000
@@ -2749,7 +2749,7 @@ paths:
                   type: string
                   example: XXXXXXXXX
                 network:
-                  enum: [mtn_ci, orange_money_ci, wave_ci, orange_money_senegal, wave_sn]
+                  enum: [mtn-ci, orange-money-ci, wave-ci, orange-money-senegal, wave-sn]
                   example: XXXXXXX
               example:
                 amount: 2000
