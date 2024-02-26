@@ -7,43 +7,43 @@ Il est nécessaire de vérifier que les événements proviennent bien de ALAL af
 Pour vérifier les événements, validez l'en-tête x-alal-signature envoyé avec l'événement. La signature HMAC SHA512 est la charge utile `payload` de l'événement signée avec votre clé secrète `ALAL_API_KEY`.
 
 <CodeGroup>
-```javascript Javascript
-const crypto = require('crypto');
-const webhookSecret = process.env.ALAL_API_KEY;
-// Using Express
-app.post("/webhook_url", function(req, res) {
+    ```javascript Javascript
+    const crypto = require('crypto');
+    const webhookSecret = process.env.ALAL_API_KEY;
+    // Using Express
+    app.post("/webhook_url", function(req, res) {
     //validate event
     const hash = crypto.createHmac('sha512', webhookSecret).update(JSON.stringify(req.body)).digest('hex');
     if (hash == req.headers['x-alal-signature']) {
     // Retrieve the request's body
     const event = req.body;
     // Do something with event  
-    }
+}
     res.send(200);
 });
-```
-```python Python
-import hmac
-from hashlib import sha512
+    ```
+    ```python Python
+    import hmac
+    from hashlib import sha512
 
-def webhook_verification(request):
-secret = os.environ.get("ALAL_API_KEY")
-signature = request.headers.get('x-alal-signature')
-computed_sig = hmac.new(
-key=webhook_secret.encode("utf-8"), msg=request.body, digestmod=sha512
-).hexdigest()
-#Bitnob generated events will return True
-return signature == computed_sig
+    def webhook_verification(request):
+    secret = os.environ.get("ALAL_API_KEY")
+    signature = request.headers.get('x-alal-signature')
+    computed_sig = hmac.new(
+    key=webhook_secret.encode("utf-8"), msg=request.body, digestmod=sha512
+    ).hexdigest()
+    #Bitnob generated events will return True
+    return signature == computed_sig
 
-````
-```php PHP
-$webhookSecret = env('ALAL_API_KEY');
-$data = json_encode($_POST);
-$hash = hash_hmac('sha512', $data, $webhookSecret);
-if ($hash == $_SERVER['x-alal-signature']) {
+    ````
+    ```php PHP
+    $webhookSecret = env('ALAL_API_KEY');
+    $data = json_encode($_POST);
+    $hash = hash_hmac('sha512', $data, $webhookSecret);
+    if ($hash == $_SERVER['x-alal-signature']) {
     // Do something with event
 }
-````
+    ````
 
 </CodeGroup>
 ## Card Users Events
@@ -110,19 +110,136 @@ if ($hash == $_SERVER['x-alal-signature']) {
 {
   "event": "card_creation.failed",
   "data": {
+    "identifier": "02584796325414",
     "reference": "9c54515e-7890-44f9-8cc2-a85b80322b98",
-    "card_number": "4634716555196705",
-    "card_brand": "Visa",
+    "card_user_reference": "9c54515e-7890-44f9-8cc2-a85b80322b98",
+    "card_brand": "mastercard",
     "card_type": "virtual",
-    "cvv2": "363",
-    "expiry": "2027-06",
+    "last_four": "XXXX",
     "balance": "0",
-    "status": "unissued"
+    "status": "unissued",
+    "created_at": "2024-01-25"
   }
 }
 ```
 
-## Transaction Events
+### Card Link Successful
+
+```json
+{
+  "event": "card_link.successful",
+  "data": {
+    "identifier": "02584796325414",
+    "reference": "9c54515e-7890-44f9-8cc2-a85b80322b98",
+    "card_user_reference": "9c54515e-7890-44f9-8cc2-a85b80322b98",
+    "card_brand": "mastercard",
+    "card_type": "physical",
+    "last_four": "XXXX",
+    "balance": "0",
+    "status": "issued",
+    "created_at": "2024-01-25"
+  }
+}
+```
+
+
+### Card Link Failed
+
+```json
+{
+  "event": "card_link.failed",
+  "data": {
+    "identifier": "02584796325414",
+    "reference": "9c54515e-7890-44f9-8cc2-a85b80322b98",
+    "card_user_reference": "9c54515e-7890-44f9-8cc2-a85b80322b98",
+    "card_brand": "mastercard",
+    "card_type": "physical",
+    "last_four": "XXXX",
+    "balance": "0",
+    "status": "issued",
+    "created_at": "2024-01-25"
+  }
+}
+```
+
+### Card Freeze Successful
+
+```json
+{
+  "event": "card_freeze.successful",
+  "data": {
+    "identifier": "02584796325414",
+    "reference": "9c54515e-7890-44f9-8cc2-a85b80322b98",
+    "card_user_reference": "9c54515e-7890-44f9-8cc2-a85b80322b98",
+    "card_brand": "mastercard",
+    "card_type": "physical",
+    "last_four": "XXXX",
+    "balance": "0",
+    "status": "issued",
+    "created_at": "2024-01-25"
+  }
+}
+```
+
+### Card Freeze Failed
+
+```json
+{
+  "event": "card_freeze.failed",
+  "data": {
+    "identifier": "02584796325414",
+    "reference": "9c54515e-7890-44f9-8cc2-a85b80322b98",
+    "card_user_reference": "9c54515e-7890-44f9-8cc2-a85b80322b98",
+    "card_brand": "mastercard",
+    "card_type": "physical",
+    "last_four": "XXXX",
+    "balance": "0",
+    "status": "issued",
+    "created_at": "2024-01-25"
+  }
+}
+```
+
+
+### Card Unfreeze Successful
+
+```json
+{
+  "event": "card_unfreeze.successful",
+  "data": {
+    "identifier": "02584796325414",
+    "reference": "9c54515e-7890-44f9-8cc2-a85b80322b98",
+    "card_user_reference": "9c54515e-7890-44f9-8cc2-a85b80322b98",
+    "card_brand": "mastercard",
+    "card_type": "physical",
+    "last_four": "XXXX",
+    "balance": "0",
+    "status": "issued",
+    "created_at": "2024-01-25"
+  }
+}
+```
+
+### Card Unfreeze Failed
+
+```json
+{
+  "event": "card_unfreeze.failed",
+  "data": {
+    "identifier": "02584796325414",
+    "reference": "9c54515e-7890-44f9-8cc2-a85b80322b98",
+    "card_user_reference": "9c54515e-7890-44f9-8cc2-a85b80322b98",
+    "card_brand": "mastercard",
+    "card_type": "physical",
+    "last_four": "XXXX",
+    "balance": "0",
+    "status": "issued",
+    "created_at": "2024-01-25"
+  }
+}
+```
+
+## Card Transaction Events
 
 ### Recharge Successful
 
@@ -222,6 +339,223 @@ if ($hash == $_SERVER['x-alal-signature']) {
     "merchant": "Alal",
     "amount": 4000,
     "created_at": "2023-10-10T13:29:45.000000Z"
+  }
+}
+```
+
+### Card To Bank Successful
+
+```json
+{
+  "event": "card_to_bank.successful",
+  "data": {
+    "reference": "222d9c54-1aa4-4a14-a099-7d6e4d80063f",
+    "card_reference": "a7517090-79b9-4af5-8c56-861ae221ae8c",
+    "status": "success",
+    "kind": "card_to_bank",
+    "merchant": "Alal",
+    "amount": 4000,
+    "card_balance": 8000,
+    "meta": null,
+    "bank_name": "YOUR_BANK_NAME",
+    "bank_id": "YOUR_BANK_IDENTIFIER",
+    "bank_account_name": "YOUR_BANK_ACCOUNT_NAME",
+    "created_at": "2023-10-10T13:29:45.000000Z"
+  }
+}
+```
+
+### Card To Bank Failed
+
+```json
+{
+  "event": "card_to_bank.failed",
+  "data": {
+    "reference": "222d9c54-1aa4-4a14-a099-7d6e4d80063f",
+    "card_reference": "a7517090-79b9-4af5-8c56-861ae221ae8c",
+    "status": "failed",
+    "kind": "card_to_bank",
+    "merchant": "Alal",
+    "amount": 4000,
+    "card_balance": 8000,
+    "meta": null,
+    "bank_name": "YOUR_BANK_NAME",
+    "bank_id": "YOUR_BANK_IDENTIFIER",
+    "bank_account_name": "YOUR_BANK_ACCOUNT_NAME",
+    "created_at": "2023-10-10T13:29:45.000000Z"
+  }
+}
+```
+
+### Card To Wallet Successful
+
+```json
+{
+  "event": "card_to_wallet.successful",
+  "data": {
+    "reference": "222d9c54-1aa4-4a14-a099-7d6e4d80063f",
+    "card_reference": "a7517090-79b9-4af5-8c56-861ae221ae8c",
+    "status": "success",
+    "kind": "card_to_wallet",
+    "merchant": "Alal",
+    "amount": 4000,
+    "card_balance": 8000,
+    "meta": null,
+    "created_at": "2023-10-10T13:29:45.000000Z"
+  }
+}
+```
+
+### Card To Wallet Failed
+
+```json
+{
+  "event": "card_to_wallet.failed",
+  "data": {
+    "reference": "222d9c54-1aa4-4a14-a099-7d6e4d80063f",
+    "card_reference": "a7517090-79b9-4af5-8c56-861ae221ae8c",
+    "status": "failed",
+    "kind": "card_to_wallet",
+    "merchant": "Alal",
+    "amount": 4000,
+    "card_balance": 8000,
+    "meta": null,
+    "created_at": "2023-10-10T13:29:45.000000Z"
+  }
+}
+```
+
+### Wallet to Card Successful
+
+```json
+{
+  "event": "wallet_to_card.successful",
+  "data": {
+    "reference": "222d9c54-1aa4-4a14-a099-7d6e4d80063f",
+    "card_reference": "a7517090-79b9-4af5-8c56-861ae221ae8c",
+    "status": "success",
+    "kind": "wallet_to_card",
+    "merchant": "Alal",
+    "amount": 4000,
+    "card_balance": 8000,
+    "meta": null,
+    "created_at": "2023-10-10T13:29:45.000000Z"
+  }
+}
+```
+
+### Wallet to Card Failed
+
+```json
+{
+  "event": "wallet_to_card.failed",
+  "data": {
+    "reference": "222d9c54-1aa4-4a14-a099-7d6e4d80063f",
+    "card_reference": "a7517090-79b9-4af5-8c56-861ae221ae8c",
+    "status": "failed",
+    "kind": "wallet_to_card",
+    "merchant": "Alal",
+    "amount": 4000,
+    "card_balance": 8000,
+    "meta": null,
+    "created_at": "2023-10-10T13:29:45.000000Z"
+  }
+}
+```
+
+## Business Transactions Events
+### Disburse Successful
+
+```json
+{
+  "event": "disburse.successful",
+  "data": {
+    "business": "YOUR_BUSINESS_NAME",
+    "customer": {
+        "full_name":  "capone bege",
+        "email":  "capone@bege.com",
+        "phone": "XXXXXXXX"
+    },
+    "slug": "a7517090-79b9-4af5-8c56-861ae221ae8c",
+    "reference": "222d9c54-1aa4-4a14-a099-7d6e4d80063f",
+    "kind": "disburse",
+    "network": "orange-money-sn",
+    "amount": 5000,
+    "status": "success",
+    "expired_at" : null,
+    "meta": null
+  }
+}
+```
+
+### Disburse Failed
+
+```json
+{
+  "event": "disburse.failed",
+  "data": {
+    "business": "YOUR_BUSINESS_NAME",
+    "customer": {
+        "full_name":  "capone bege",
+        "email":  "capone@bege.com",
+        "phone": "XXXXXXXX"
+    },
+    "slug": "a7517090-79b9-4af5-8c56-861ae221ae8c",
+    "reference": "222d9c54-1aa4-4a14-a099-7d6e4d80063f",
+    "kind": "disburse",
+    "network": "orange-money-sn",
+    "amount": 5000,
+    "status": "failed",
+    "expired_at" : null,
+    "meta": null
+  }
+}
+```
+
+### Payment Successful
+
+```json
+{
+  "event": "payment.successful",
+  "data": {
+    "business": "YOUR_BUSINESS_NAME",
+    "customer": {
+        "full_name":  "capone bege",
+        "email":  "capone@bege.com",
+        "phone": "XXXXXXXX"
+    },
+    "slug": "a7517090-79b9-4af5-8c56-861ae221ae8c",
+    "reference": "222d9c54-1aa4-4a14-a099-7d6e4d80063f",
+    "kind": "payment",
+    "network": "orange-money-sn",
+    "amount": 5000,
+    "status": "success",
+    "expired_at" : null,
+    "meta": null
+  }
+}
+```
+
+### Payment Failed
+
+```json
+{
+  "event": "payment.failed",
+  "data": {
+    "business": "YOUR_BUSINESS_NAME",
+    "customer": {
+        "full_name":  "capone bege",
+        "email":  "capone@bege.com",
+        "phone": "XXXXXXXX"
+    },
+    "slug": "a7517090-79b9-4af5-8c56-861ae221ae8c",
+    "reference": "222d9c54-1aa4-4a14-a099-7d6e4d80063f",
+    "kind": "payment",
+    "network": "orange-money-sn",
+    "amount": 5000,
+    "status": "failed",
+    "expired_at" : null,
+    "meta": null
   }
 }
 ```
