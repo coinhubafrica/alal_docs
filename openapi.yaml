@@ -229,7 +229,7 @@ paths:
                   example: '500'
                 network:
                   type: string
-                  enum: ['orange-money-sn', 'wave-sn', 'bank']
+                  enum: ['orange-money-sn', 'wave-sn', 'orange-money-ci', 'wave-ci', 'mtn-ci', 'moov-ci', 'mtn-bj', 'moov-bj', 'moov-tg', 't-money-togo', 'bank']
                 customer:
                   type: object
                   properties:
@@ -648,7 +648,7 @@ paths:
                   type: integer
                 network:
                   type: string
-                  enum: ['orange-money-sn', 'wave-sn']
+                  enum: ['orange-money-sn', 'wave-sn', 'orange-money-ci', 'wave-ci', 'mtn-ci', 'moov-ci', 'mtn-bj', 'moov-bj', 'moov-tg', 't-money-togo']
                 customer:
                   type: object
                   properties:
