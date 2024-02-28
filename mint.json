@@ -138,6 +138,12 @@
         "api-reference/disputes/create-dispute",
         "api-reference/disputes/update-dispute"
       ]
+    },
+    {
+      "group": "Miscellaneous",
+      "pages": [
+        "api-reference/misc/phone-verification"
+      ]
     }
   ],
   "footerSocials": {

@@ -4397,4 +4397,126 @@ paths:
                     slug: {reference}
                     status: submitted
                     reason: duplicate
-                    explanation: No real explanation even now                
+                    explanation: No real explanation even now
+  /phone/verify:
+    post:
+      tags:
+        - Miscellaneous
+      summary: Phone verification
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                phone:
+                  type: string
+                  example: 7778549625
+                country_code:
+                  type: string
+                  enum: [sn, ci , tg, bj, bf]
+                  example: sn
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: OK
+          headers:
+            Server:
+              schema:
+                type: string
+                example: nginx
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Vary:
+              schema:
+                type: string
+                example: Accept-Encoding
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Date:
+              schema:
+                type: string
+                example: Mon, 07 Aug 2023 16:34:27 GMT
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '60'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '59'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            Content-Encoding:
+              schema:
+                type: string
+                example: gzip
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: OK
+                  statusCode:
+                    type: integer
+                    example: 200
+                  data:
+                    type: object
+                    properties:
+                      valid:
+                        type: boolean
+                      carrier_name:
+                        type: string
+                      mobile_money_network:
+                        type: array
+                      country_code:
+                        type: string
+                      phone:
+                        type: string
+              example:
+                message: OK
+                statusCode: 200
+                data:
+                  - valid: true
+                    carrier_name: Orange Senegal
+                    mobile_money_network: [
+                      "Orange Money Senegal",
+                      "Wave Senegal"
+                    ]
+                    country_code: sn
+                    phone: 778554525
