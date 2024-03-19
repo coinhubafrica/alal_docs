@@ -2359,6 +2359,9 @@ paths:
                 account_name:
                   type: string
                   example: YOU_BANK_ACCOUNT_NAME
+                description::
+                  type: string
+                  example: paiement de biens et services
               example:
                 amount: 2000
                 card_reference: 6516484d-0059-4f53-b2cf-31f3ae884d3a
