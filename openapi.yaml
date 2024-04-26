@@ -2359,12 +2359,16 @@ paths:
                 account_name:
                   type: string
                   example: YOU_BANK_ACCOUNT_NAME
+                description:
+                  type: string
+                  example: paiement de biens et services
               example:
                 amount: 2000
                 card_reference: 6516484d-0059-4f53-b2cf-31f3ae884d3a
                 reference: b60f54d5b1-922a-40ty6a-8417-fasjhdfdfdi231i
                 bank_id: XX08XX0100163110648500003035
                 bank_name: YOUR_BANK_NAME
+                description: paiement de biens et services
       security:
         - bearerAuth: []
       parameters:
