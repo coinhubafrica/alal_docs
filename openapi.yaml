@@ -2759,8 +2759,9 @@ paths:
                   type: string
                   description: |
                     Optional property only mandatory for **_orange-money-sn_** and **_orange-money-ci_** request.
-                    - You can generate a code for **_orange-money-sn_** by typing **#144#391*YOUR_ORANGE_MONEY_PIN_CODE#**
-                    - You can generate a code for **_orange-money-ci_** by typing **#144\*82\*2#**
+                    - You can generate a code for **_orange-money-sn_** (The code last 15 minutes) by typing **#144#391*YOUR_ORANGE_MONEY_PIN_CODE#**                     
+                    - You can generate a code for **_orange-money-ci_** (The code last 2 minutes) by typing **#144\*82\*2#**
+
               required:
                 - amount
                 - card_reference
