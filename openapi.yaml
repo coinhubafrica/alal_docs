@@ -233,6 +233,9 @@ paths:
                 network:
                   type: string
                   enum: ['orange-money-sn', 'wave-sn', 'orange-money-ci', 'wave-ci', 'mtn-ci', 'moov-ci', 'mtn-bj', 'moov-bj', 'moov-tg', 't-money-togo', 'bank']
+                partner_reference:
+                  type: string
+                  example: XXX-XXXXXX-XXXX  
                 customer:
                   type: object
                   properties:
