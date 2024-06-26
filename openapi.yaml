@@ -245,6 +245,9 @@ paths:
                     phone:
                       type: string
                       example: 77XXXXXXX
+                    partner_reference:
+                      type: string
+                      example: XXX-XXXXXX-XXXX                      
                     bank_id:
                       type: string
                       example: XX08XX0100163110648500003035
@@ -369,6 +372,7 @@ paths:
                     reference: d282e4a6-1fb6-4827-a6ae-a780263287d7
                     kind: disburse
                     network: bank | orange-money-sn | wave-sn
+                    partner_reference: XXX-XXXXXX-XXXX
                     amount: 500
                     status: processing
                     expired_at: 2024-01-11
