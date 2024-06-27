@@ -656,6 +656,8 @@ paths:
               properties:
                 amount:
                   type: integer
+                partner_reference:
+                  type: string
                 network:
                   type: string
                   enum: ['orange-money-sn', 'wave-sn', 'orange-money-ci', 'wave-ci', 'mtn-ci', 'moov-ci', 'mtn-bj', 'moov-bj', 'moov-tg', 't-money-togo']
@@ -742,6 +744,8 @@ paths:
                             type: string
                       slug:
                         type: string
+                      partner_reference:
+                        type: string
                       reference:
                         type: string
                       kind:
@@ -768,6 +772,7 @@ paths:
                       phone: 77XXXXXXX
                     slug: d282e4a6-1fb6-4827-a6ae-a780263287d7
                     reference: d282e4a6-1fb6-4827-a6ae-a780263287d7
+                    partner_reference: XXX-XXXXXX-XXXX
                     kind: disburse
                     network: bank | orange-money-sn | wave-sn
                     amount: 500
