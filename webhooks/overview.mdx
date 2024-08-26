@@ -578,3 +578,27 @@ Pour vérifier les événements, validez l'en-tête x-alal-signature envoyé ave
   }
 }
 ```
+
+### Payment Expired
+
+```json
+{
+  "event": "payment.expired",
+  "data": {
+    "business": "YOUR_BUSINESS_NAME",
+    "customer": {
+        "full_name":  "capone bege",
+        "email":  "capone@bege.com",
+        "phone": "XXXXXXXX"
+    },
+    "slug": "a7517090-79b9-4af5-8c56-861ae221ae8c",
+    "reference": "222d9c54-1aa4-4a14-a099-7d6e4d80063f",
+    "kind": "payment",
+    "network": "orange-money-sn",
+    "amount": 5000,
+    "status": "expired",
+    "expired_at" : "2023-10-10T13:29:45.000000Z",
+    "meta": null
+  }
+}
+```
